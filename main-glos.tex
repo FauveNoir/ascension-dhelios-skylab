@@ -1,0 +1,745 @@
+%vim: syntax=tex
+% TODO
+% http://texblog.org/2014/04/01/multiple-glossaries-in-latex/
+% https://en.wikibooks.org/wiki/LaTeX/Glossary
+
+
+
+% Acronymes
+%% Disciplines
+\newacronym{anthr}{Anthr.}{Anthropologie}
+\newacronym{biol}{Biol.}{Biologie}
+\newacronym{car}{Car.}{Caractérologie}
+\newacronym{cosm}{Cosm.}{Cosmologie}
+\newacronym{crit}{Crit.}{Critique ou théorie de la connaissance}
+\newacronym{crypa}{Crypa.}{Cryptanalyse}
+\newacronym{crypg}{Crypg.}{Cryptographie}
+\newacronym{crypt}{Crypt.}{Cryptologie}
+\newacronym{cyb}{Cyb.}{Cybernétique}
+\newacronym{dr}{Dr.}{Droit}
+\newacronym{eco}{Éco.}{Économie}
+\newacronym{epist}{Épist.}{Épistémologie ou philosophie des sciences}
+\newacronym{esth}{Esth.}{Ésthétique ou philosohpie de l’art}
+\newacronym{ethn}{Éthn.}{Éthnologie}
+\newacronym{exist}{Éxist.}{Éxistentialisme}
+\newacronym{heral}{Héral.}{Héraldique}
+\newacronym{hist}{Hist.}{Histoire}
+\newacronym{it}{IT}{Informatique}
+\newacronym{inf}{Inf.}{Informatique}
+\newacronym{ling}{Ling.}{Linguistique}
+\newacronym{litt}{Litt.}{Littérature}
+\newacronym{log}{Log.}{Logique}
+\newacronym{logform}{Log.\,form.}{Logique formelle}
+\newacronym{logmod}{Log.\,mod.}{Logique moderne}
+\newacronym{math}{Math.}{Mathématiques}
+\newacronym{mec}{Méc.}{Mécanique}
+\newacronym{med}{Méd.}{Médecine}
+\newacronym{méta}{Méta.}{Métaphysique}
+\newacronym{mor}{Mor.}{Morale}
+\newacronym{ped}{Péd.}{Pédagogie ou sciences de l’éducation}
+\newacronym{phen}{Phén.}{Phénoménologie}
+\newacronym{phil}{Phil.}{Philosophie générale}
+\newacronym{phys}{Phys.}{Physique}
+\newacronym{physio}{Physio.}{Physiologie}
+\newacronym{pol}{Pol.}{Politique}
+\newacronym{psy}{Psy.}{Psychologie}
+\newacronym{psychan}{Psychan.}{Psychanalyse}
+\newacronym{psychia}{Psychia.}{Psychiatrie}
+\newacronym{psymétr}{Psy.\,métr.}{Psychométrie}
+\newacronym{psypath}{Psy.\,path.}{Psychopathologie}
+\newacronym{psyphysio}{Psy.\,physio.}{Psychophysiologie}
+\newacronym{psysoc}{Psy.\,soc.}{Psychologie sociale}
+\newacronym{rel}{Rel.}{Religion}
+\newacronym{soc}{Soc.}{Sociologie}
+\newacronym{sex}{Sex.}{Sexologie}
+\newacronym{tech}{Tech.}{Technique}
+\newacronym{theo}{Théo.}{Théologie}
+\newacronym{vulg}{Vulg.}{Langue courante (vulgo) sans nuance péjorative}
+
+\newcommand{\dictionnarydiciplin}[1]{\emph{\Gls{#1}} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Personages
+\newacronym{amt}{AMT}{Alan Mathison \bsc{Turing}}
+\newacronym{rms}{RMS}{Richard Matthew \bsc{Stallman}}
+\newacronym{dmr}{DMR}{Dennis MacAlistair \bsc{Ritchie}}
+\newacronym{klt}{KLT}{Kenneth Lane \bsc{Thompson}}
+\newacronym{bwk}{BWK}{Brian Wilson \bsc{Kernighan}}
+\newacronym{lbt}{LBT}{Linus Benedict \bsc{Torvalds}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Locutions
+\newacronym{amha}{ÀMHA}{À mon humble avis}
+\newacronym{maj}{MÀJ}{Mise à jour}
+\newacronym{raf}{RÀF}{Rien à foutre}
+\newacronym{ras}{RÀS}{Rien à signaler}
+\newacronym{no}{\no{}}{Numéro}
+\newacronym{etpuis}{\&}{Et (Conjonction copulative)}
+\newacronym{ou}{|}{Ou (Conjonction altérnative)}
+\newacronym{cad}{C.-à-d.}{C’est-à-dire}
+\newacronym{cqfd}{CQFD}{Ce qu’il fallait démontrer}
+\newacronym{osef}{OSEF}{On s’en fout}
+\newacronym{pm}{pm}{\latin{Post meridiem}}
+\newacronym{am}{am}{\latin{Ante meridiem}}
+\newacronym{ssi}{Ssi}{Si et seulement si}
+\newacronym{ld}{LD}{Liste de diffiusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\makeglossaries
+
+\newglossaryentry{uchronisme}
+{
+  type=fauveneologism.,
+    name={uchronisme},
+    description={Élément particulier à caractère uchronique. Par exemple : La présence d’une Tour Eiffel dans un Paris médiéval.},
+    plural={uchronismes}
+}
+
+\longnewglossaryentry{anatopisme}
+{
+  type=fauveneologism,
+    name={anatopisme},
+    plural={anatopismes}
+}
+{
+  \begin{enumerate}
+    \item (Calqué sur \href{https://fr.wikipedia.org/wiki/Anachronisme}{\autonym{manachronisme}}) Aberration dans un récit consistant en la présence incongrue d’un lieux ou d’un élément (souvent fixe et immobilier) à un endroit inattendu. Par exemple : La présence d’une Tour Eiffel ailleurs qu’à Paris. 
+    \item Peut s’entendre selon une acception critique à l’égard d’un élément existant dans la réalité copiant un autre plus célèbre. Par exemple, les nombreuses \href{https://fr.wikipedia.org/wiki/R\C3\%A9pliques\_et\_imitations\_de\_la\_tour\_Eiffel}{répliques} de La Tour Eiffel qui existent de part le monde (comme \href{https://fr.wikipedia.org/wiki/Paris\_Las\_Vegas\#Reproduction\_de\_lieux\_parisiens}{celle} de Las Vegas) peuvent être qualifiées péjorativement d’anatopique pour en dénoncer le mauvais gout.
+  \end{enumerate}
+}
+
+\newglossaryentry{cryptonyme}
+{
+  type=fauveneologism.,
+    name={cryptonyme},
+    description={\dictionnarydiciplin{crypg} Pseudonyme utilisé à des fins d’anonymat.},
+    plural={cryptonymes}
+}
+
+\newglossaryentry{cephalopode}
+{
+  type=fauveneologism.,
+    name={céphalopode},
+    description={(au sens figuré) personne qui agit de façon irraisonnée, à l’encontre du bon sens (métaphore filée de \enquote{marcher sur la tête}).},
+    plural={céphalopodes}
+}
+
+\newglossaryentry{ausoirdhui}
+{
+  type=fauveneologism.,
+    name={ausoird’hui},
+    description={(Calqué sur \autonym{Aujourd’hui}) Désigne la soirée du jour où l’on parles.}
+}
+
+\newglossaryentry{femmages}
+{
+  type=fauveneologism.,
+    name={femmages},
+    description={Équivalent des hommages de la part des femmes à destination des hommes.}
+}
+
+\newglossaryentry{violencemeca}
+{
+  type=fauveneologism.,
+    name={violence mécanique},
+    description={Désigne, aussi bien dans un monde fictif que dans une réalité future, des combats entre machines autonomes ou pilotées à distances n’engendrant aucune victime ni blessé humain ou vivant en général, ni de dégâts matériels autre que les machines militaires prenant part au conflit.},
+    plural={Violences mécaniques}
+}
+
+\newglossaryentry{Motetiquette}
+{
+  type=fauveneologism.,
+    name={mot-étiquette},
+    description={Francisation de \english{hashtag}.},
+    plural={mots-étiquettes}
+}
+
+\newglossaryentry{cybernetique}
+{
+  type=fauveneologism.,
+    name={Cybernétique},
+    description={Phénomène social de lutte pour le pouvoir à distinguer de la \exergue{politique} qui est, au sens étymologique, l’art de la gestion de la cité.},
+    plural={Cybernétiques}
+}
+
+\newglossaryentry{marqueme}
+{
+  type=fauveneologism.,
+    name={marquème},
+    description={Francisation savante de \english{hashtag}.},
+    plural={marquèmes}
+}
+
+\newglossaryentry{hyberique}
+{
+  type=fauveneologism.,
+    name={hybérique},
+    description={\dictionnarydiciplin{humo} Caractéristique typographique d’un caractère penché vers là gauche (par allusion à \exergue{italique}).},
+    plural={Hybériques}
+}
+
+\newglossaryentry{americounioniste}
+{
+  type=fauveneologism.,
+    name={américo-unioniste},
+    description={Gentilé des États-Unis d’Amérique.},
+    plural={américo-unionistes}
+}
+
+\newglossaryentry{matrie}
+{
+  type=fauveneologism.,
+    name={matrie},
+    description={Calqué sur \exergue{patrie} et désigne la communauté des croyant, soit une francisation de la \xenism{oumma}.},
+    plural={Matries}
+}
+
+\newglossaryentry{exmatriation}
+{
+  type=fauveneologism.,
+    name={exmatriation},
+    description={Francisation de \xenism{takfîr}, dérrivée de \autonym{\Gls{matrie}} et qualqué sur \autonym{expatriation}, plus en harmonie avec les concepts téologiques islamiques que son équivalent chrétien, l’\exergue{excommunication}.},
+    plural={Exmatriations}
+}
+
+\newglossaryentry{linuxexnihilo}
+{
+  type=fauveneologism.,
+    name={Linux \latin{ex nihilo}},
+    description={\dictionnarydiciplin{humo} Francisation, ou plutôt latinisation, de \href{https://fr.wikipedia.org/wiki/Linux\_From\_Scratch}{\english{Linux from scratch}}.}
+}
+
+\newglossaryentry{croissancelogarithmique}
+{
+  type=fauveneologism.,
+    name={croissance logarithmique},
+    description={\dictionnarydiciplin{humo} Qualifie une croissance jugée trop peut rapide voir même si lente qu’elle en parait stagnante (parodie l’usage au sens figuré de l’épithète \exergue{exponentiel}).},
+    plural={croissances logarithmiques}
+}
+
+\newglossaryentry{frawamande}
+{
+  type=fauveneologism.,
+    name={Frawamande},
+    description={(Inspiré de \autonym{Benelux}) Mot valise contractant \autonym{France}, \autonym{Wallonie} et \autonym{Romandie} pour désigner l’ensemble de ceux-ci, soit toute l’Europe francophone (exeption faite des micro-états d’Andorre, du Liechtenstein et de Monaco).},
+    plural={Frawamandes}
+}
+
+\newglossaryentry{mediavif}
+{
+  type=fauveneologism.,
+    name={(disque|media) vif},
+    description={Francisation de \english{Live (CD|media)} qui désigne un média amovible amorçable.},
+    plural={(disques|medias) vifs}
+}
+
+\newglossaryentry{moulin}
+{
+  type=fauveneologism.,
+    name={moulin},
+    description={\dictionnarydiciplin{inf} Logiciel client du protocole BiTorrent.},
+    plural={moulins}
+}
+
+\newglossaryentry{modusludi}
+{
+  type=fauveneologism.,
+    name={\latin{modus ludī}},
+    description={Francisation de \href{https://fr.wikipedia.org/wiki/Gameplay}{\english{gameplay}}.},
+    plural={\latin{modi ludōrum}}
+}
+
+\newglossaryentry{Protophilosophe}
+{
+  type=fauveneologism.,
+    name={protophilosophe},
+    description={\dictionnarydiciplin{hist} \dictionnarydiciplin{phil.}État d’une personne en proie à un questionnement existentiel peut avant que celle-ci ne devienne ouvertement philosophe.},
+    plural={protophilosophes}
+}
+
+\newglossaryentry{samanche}
+{
+  type=fauveneologism.,
+    name={samanche},
+    description={Contraction de \exergue{\important{Sam}edi} et de \exergue{Di\important{manche}} désignant les deux jours de \exeruge{fin de semaine}. Francisation de \english{week-end}.},
+    plural={samanches}
+}
+
+\newglossaryentry{journalextime}
+{
+  type=fauveneologism.,
+    name={journal extime},
+    description={Site gén. accessible grace à un dispositif de communication ellectronique, tel le \href{https://fr.wikipedia.org/wiki/Web}{Web} ou \href{https://fr.wikipedia.org/wiki/Gopher}{Gopher}, où sont publiés un ensemble de billets par un auteur au fur et à mesure de sa réflexion sur un sujet. Cette \href{https://fr.wikipedia.org/wiki/Journal\_extime}{expression}, en réalité inspirée de \href{https://fr.wikipedia.org/wiki/Michel\_Tournier}{M.\,Michel \bsc{Tournier}} est utilisée en tant que francisation de \href{https://fr.wiktionary.org/wiki/blog}{\english{blog}}.},
+    plural={journaux extimes}
+}
+
+\newglossaryentry{unixide}
+{
+  type=fauveneologism.,
+    name={unixide},
+    description={Francisation d’\english{unix-based. Adjectif qualifiant un système d’exploitation dont le code source est une évolution de celui d’\href{https://fr.wikipedia.org/wiki/Unix}{Unix}.},
+    plural={unixides}
+}
+
+\newglossaryentry{unixmorphe}
+{
+  type=fauveneologism.,
+    name={unixmorphe},
+    description={Francisation d’\english{unix-like}. Adjectif qualifiant un système d’éxploitation dont les fonctionnalités et le mode de fonctionnement général est inspiré d’\href{https://fr.wikipedia.org/wiki/Unix}{Unix}.},
+    plural={unixmorphes}
+}
+
+\longnewglossaryentry{autobibliographie}
+{
+  type=fauveneologism,
+    name={autobibliographie},
+    plural={autobibliographies}
+}
+{
+  \begin{enumerate}
+    \item \latin{Stricto sensu : Liste de livres ou programme de lectures que se propose de suivre un individus, qu’il joint parfois de notes critiques des livres lus, que l’on pourrait encore voire comme \enquote{une sorte d’autobiographie par les livres ou de bibliographie ontologique}.
+
+    \item Par ext., liste d’œuvres pouvant étre, outre littéraires, cinématographiques, musicales, ludiques ou d’activités telles que la fréquentations de muséums ou la réalisation de certains voyages, voir l’étude de certaines langues, ayant en commun un carctère \exergue{culturel}.
+  \end{enumerate}
+}
+
+\newglossaryentry{autocinematographie}
+{
+  type=fauveneologism.,
+    name={autocinématographie},
+    description={Extention de l’\gls{autobibliographie} au domaine du cinéma. Ensemble d’ouvrages cinématographiques qu’un individu se propose de visionner.},
+    plural={autocinématographies},
+    parent={autobibliographie}
+}
+
+\longnewglossaryentry{automicrocinematographie}
+{
+  type=fauveneologism,
+    name={automicrocinématographie},
+    plural={automicrocinématographies},
+    parent={autobibliographie}
+}
+{
+  Variente de l’\gls{autocinematographie} spécifique aux \href{https://fr.wikipedia.org/wiki/Court\_métrage}{courts métrages}.
+
+  N’a aucun lien avec la technique de la \autonym{\href{https://fr.wiktionary.org/wiki/microcinématographie}{microcinématographie}}.
+}
+
+\newglossaryentry{automusicographie}
+{
+  type=fauveneologism.,
+    name={automusicographie},
+    description={Extention de l’\gls{autobibliographie} au domaine de la musique. Ensemble d’œuvres musicales qu’un individu se propose d’écouter et d’étudier.},
+    plural={automusicographies},
+    parent={autobibliographie}
+}
+
+\newglossaryentry{autoludographie}
+{
+  type=fauveneologism.,
+    name={autoludographie},
+    description={Extention de l’\gls{autobibliographie} au domaine du jeux. Ensemble d’activités ludiques, relevant gén. des \href{https://fr.wikipedia.org/wiki/Serious\_game}{jeux sérieux}, auquelles un individu se propose de participer.},
+    plural={autoludographies},
+    parent={autobibliographie}
+}
+
+\newglossaryentry{autoviatographie}
+{
+  type=fauveneologism.,
+    name={Autoviatographie},
+    description={Du latin \href{https://fr.wiktionary.org/wiki/via\#Latin}{\latin{viă}\,(\latin{æ})}, \autonym{route}. Extention de l’\gls{autobibliographie} aux voyages. Ensemble de voyages qu’un individu se propose d’éffectuer.},
+    plural={autoviatographies},
+    parent={autobibliographie}
+}
+
+\newglossaryentry{automuseographie}
+{
+  type=fauveneologism.,
+    name={automuséographie},
+    description={Extention de l’\gls{autobibliographie} à la fréquentation des muséums. Ensemble d’activités muséales qu’un individu se propose d’acomplire.},
+    plural={automuséographies},
+    parent={autobibliographie}
+}
+
+\newglossaryentry{autolinguographie}
+{
+  type=fauveneologism.,
+    name={autolinguographie},
+    description={Extention de l’\gls{autobibliographie} à l’étude des langues. Ensemble de langues qu’un individu se propose d’aprendre.},
+    plural={autolinguographies},
+    parent={autobibliographie}
+}
+
+\newglossaryentry{autosapiensographie}
+{
+  type=fauveneologism.,
+    name={autosapiensographie},
+    description={Extention de l’\gls{autobibliographie} à l’activité sur des \href{https://fr.wikipedia.org/wiki/MOOC}{CLOM}. Ensemble de cours qu’un individu se propose de suivre sur une plateforme ouverte et massive. Du latin \href{https://fr.wiktionary.org/wiki/sapiens\#Nom\_commun}{\latin{sapiens}\,(\latin{tēs})}, \autonym{sage}.},
+    plural={autosapiensographies},
+    parent={autobibliographie}
+}
+
+\newglossaryentry{autorhetographie}
+{
+  type=fauveneologism.,
+    name={autorhetographie},
+    description={Extention de l’\gls{autobibliographie} à la participation aux \href{https://fr.wikipedia.org/wiki/Conférence}{conférences}. De la forme élidée de \href{https://fr.wiktionary.org/wiki/rhetor\#la}{\latin{rhetor}\,(\latin{ēs})} (\enquote{maître d’éloquence}).},
+    plural={autorhetographies},
+    parent={autobibliographie}
+}
+
+\newglossaryentry{automarsiographie}
+{
+  type=fauveneologism.,
+    name={automarsiographie},
+    description={Extention de l’\gls{autobibliographie} à la participation à la pratique des \href{https://fr.wikipedia.org/wiki/Arts\_martiaux}{arts martiaux}. Du latin \href{https://fr.wiktionary.org/wiki/rhetor\#la}{\latin{Mars}} qui désigne le dieu de la guerre chez les Romains.},
+    plural={automarsiographies},
+    parent={autobibliographie}
+}
+
+\newglossaryentry{Ligathèque}
+{
+  type=fauveneologism.,
+    name={Ligathèque},
+    description={Collection organisée d’\href{https://fr.wikipedia.org/wiki/Uniform\_Resource\_Identifier}{identifiants uniformes de ressource} en particulier de \href{https://fr.wikipedia.org/wiki/Uniform\_Resource\_Locator}{localisateurs}, éventuellement ordonnée thématiquement.},
+    plural={Ligathèques}
+}
+
+\longnewglossaryentry{xou}
+{
+  type=fauveneologism,
+    name={xou}
+}
+{
+  \begin{enumerate}
+    \item \emph{Gram.\,Log.\,Inf.}\,Disjonction exclusive \enquote{OU e\import{x}clusif}. Opérateur distinguant deux assertions dont une \incise{et seulement une seule} est vraie à la fois.
+
+    La nunace d’avec l’\autonym{ou} français est que, ce dernier étant altérnatif, l’utiliser équivant à dire qu’\exergue{au moins} une altérnative (la première, la seconde ou les deux à la fois) est vraie. L’\autonym{ou} est maintenu comme conjonction altérnative et se voit complété par la possibilité d’utiliser le \autonym{xou} dans les cas où une seule option est permise.
+
+    Ainsi, pour filer la boutade du \href{http://www.nojhan.net/geekscottes/index.php?id=144}{\work{Branchement conditionnel}}, si la mère avait demandé \enquote{Est-ce un garçon \exergue{xou} une fille?}, la réponse du père aurait toujours été \enquote{Oui} à moins que le nouveau-né ne soit hérmaphrodite. (Vous suivez?)
+
+
+    \item \emph{Log.\,Inf.\,Tech.} Francisation de \href{https://fr.wikipedia.org/wiki/Xor}{la} fonction logique disjonctive exclusive \autonym{\english{xor}}.
+  \end{enumerate}
+}
+
+\newglossaryentry{noussoiement}
+{
+  type=fauveneologism.,
+    name={noussoiement},
+    description={Action d’utiliser le pronom \autonym{\href{https://fr.wiktionary.org/wiki/nous\#fr}{nous}} (indistinctement de \href{https://fr.wiktionary.org/wiki/nous\_de\_modestie}{modestie} ou de \href{https://fr.wiktionary.org/wiki/nous\_de\_majesté}{majesté}) par un locuteur unique.},
+    plural={noussoiements}
+}
+
+\longnewglossaryentry{gonopose}
+{
+  type=fauveneologism,
+    name={gonopose},
+    plural={gonoposes}
+}
+{
+  \emph{Biol.}\,Arrêt naturel des fonctions de reproduction d’un organisme lié à l’âge. Cas général de la \autonym{ménopause} et de l’\autonym{andropose} aux deux sexes et aux organismes assexués.
+
+  Sur une \href{https://french.stackexchange.com/questions/8416/mot-générique-pour-désigner-larrêt-de-la-capacité-à-se-reproduire/8424\#8424}{réflection} de \href{https://french.stackexchange.com/users/1328/morwenn}{Morwenn}.
+}
+
+\longnewglossaryentry{ident}
+{
+  type=fauveneologism,
+    name={ident},
+    plural={idents}
+}
+{
+  Adjectif qualifiant deux objets distincts mais ayant une nature commune sur laquelle on souhaite attirer l’attention.
+
+  \paragraph{}
+  À distinguer de \autonym{même} qui est résérvé pour qualifier strictement un même objet individualisé. Celà transpose au français la \href{http://www.arte.tv/fr/le-mot-le-meme/7367656,CmC=7367734.html}{distinction} que la langue allemande fait entre \xenism{dasselbe} et \xenism{das gleiche}.
+
+  \paragraph{}
+  Exemple: \enquote{Elle porte une robe \exergue{idente} à la mienne} (le même modèle de robe) mais \enquote{Elle porte la \exergue{même} robe qu’hiers} (la robe même identifiée individuellement).
+}
+
+\longnewglossaryentry{andre}
+{
+  type=fauveneologism,
+    name={andre},
+    plural={andres}
+}
+{
+  Désigne un individu masculin de l’espèce \href{https://fr.wikipedia.org/wiki/Homo\_sapiens}{\taxon{Homo sapiens}}.
+
+  \paragraph{}
+  Permet de distinguer \autonym{homme, au sens de \href{https://fr.wiktionary.org/wiki/vir\#Latin}{\latin{vir}\,(\latin{-ī})}, de \autonym{homme}, au sens de \href{https://fr.wiktionary.org/wiki/homo\#la}{\latin{hŏmo}\,(\latin{-ĭnēs})} ; restreignant ainsi l’usage de ce mot au cas général de tous les humains indépendament de leur genre.
+}
+
+\newglossaryentry{argadorthogr}
+{
+  type=fauveneologism.,
+    name={\latin{argumentum ad orthographiam}},
+    description={Attitude \href{https://fr.wikipedia.org/wiki/Sophisme}{sophistique} consistant à discréditer ou discalifier des arguments ou une personne les tenant pour seule raison de l’incorrection orthotipographique, au mépris de la validité du raisonnement même.},
+    plural={\latin{Argumenta ad orthographiam}}
+}
+
+\newglossaryentry{ambisenestre}
+{
+  type=fauveneologism.,
+    name={ambisenestre},
+    description={\emph{Humo.}\,(qualqué sur \autonym{\href{https://fr.wiktionary.org/wiki/ambidextre}{ambidextre}}) Personne malhabile. Aussi maladroite de sa main gauche que de sa main droite.},
+    plural={ambisenestres}
+}
+
+\newglossaryentry{piel}
+{
+  type=fauveneologism.,
+    name={piel},
+    description={\emph{Humo.\,Ling.}\’\href{https://fr.wikipedia.org/wiki/Nombre\_grammatical}{Nombre grammatical} correspondant à un groupe constitué d’éxactement \href{https://fr.wikipedia.org/wiki/Pi}{π} unités.},
+    plural={piels}
+}
+
+\newglossaryentry{necromancier}
+{
+  type=fauveneologism.,
+    name={nécromancier},
+    description={\emph{Litt.}\,Contraction de \autonym{\href{https://fr.wikipedia.org/wiki/Nécromancie}{nécromancien}} et de \autonym{romancier}. Désigne une personne qui fait revivre, selon les canons de son époque, des livres anciens.},
+    plural={nécromanciers}
+}
+
+\newglossaryentry{chigner}
+{
+  type=fauveneologism.,
+    name={chigner},
+    description={\emph{Crypt.\,Inf.\,Humo.}\,Action de chiffrer et de signer dans cet ordre un message.}
+}
+
+\newglossaryentry{siffrer}
+{
+  type=fauveneologism.,
+    name={siffrer},
+    description={\emph{Crypt.\,Inf.\,Humo.}\,Action de signer et de chiffrer dans cet ordre un message.}
+}
+
+\newglossaryentry{intrologue}
+{
+  type=fauveneologism.,
+    name={intrologue},
+    description={Type d’introspection discursive. Façon de dialoguer avec soi même où deux locuteurs intérieures peuvent interagissent.},
+    plural={intrologues}
+}
+
+\newglossaryentry{fousombre}
+{
+  type=fauveneologism.,
+    name={fou sombre},
+    description={Dans le jargon des échecs, désigne un \href{https://fr.wikipedia.org/wiki/Fou\_(échecs)}{fou} de case noir. Cette appélation qui tient son origine du vocabulaire échiquéen anglophone est plus concise que l’appélation \enquote{fou de case noire} et moins sujet à controverse que \enquote{fou noir}},
+    plural={fous sombres}
+}
+
+\newglossaryentry{fouclair}
+{
+  type=fauveneologism.,
+    name={fou clair},
+    description={Dans le jargon des échecs, désigne un \href{https://fr.wikipedia.org/wiki/Fou\_(échecs)}{fou} de case blanche. Cette appélation qui tient son origine du vocabulaire échiquéen anglophone est plus concise que l’appélation \enquote{fou de case blanche} et moins sujet à controverse que \enquote{fou blanc}.},
+    plural={fous clairs}
+}
+
+\newglossaryentry{castellophilie}
+{
+  type=fauveneologism.,
+    name={castellophilie},
+    description={Attrait en même temps que l’activité qui en résulte pour les châteaux et forteresse, particulièrement ceux du Moyen~Âge.},
+    plural={castellophilies}
+}
+
+\newglossaryentry{medinophilie}
+{
+  type=fauveneologism.,
+    name={médinophilie},
+    description={Attrait en même temps que l’activité qui en résulte pour les \href{https://fr.wikipedia.org/wiki/Médina}{médinas}.},
+    plural={médinophilies}
+}
+
+\longnewglossaryentry{samationaute}
+{
+  type=fauveneologism,
+    name={samationaute},
+    plural={samationautes}
+}
+{
+  \begin{enumerate}
+    \item \emph{Humo.\,Tech.\,Futurisme}\,De \arabrevert{smA'} (\enquote{Ciel}), désigne un voyageur spatial de nationnalité arabe, suivant ainsi, l’usage des \href{https://fr.wikipedia.org/wiki/Astronaute\#Terminologie}{déclinaisons terminologiques} de cette profession.
+
+    \item \emph{Humo.}\,Désigne, au sens figuré, des personnes de nationnalité arabe effectuant des voyages spatiaux sans utiliser de véhicules spatiaux mais ayant recour à des techniques de vol fondées sur la chimie.
+  \end{enumerate}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Locutions idiomatiques
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\longnewglossaryentry{tudesque}
+{
+  type=fauvelocution,
+    name={Prononcer volontier le serment de Strasbourg en langue tudesque}
+}
+{
+  Dans un cadre bilingue francophone et gérmanophone, se dit d’un locuteur qui est plus à l’aise dans l’expression en langue française qu’allemande.
+
+  En référence au \href{https://fr.wikipedia.org/wiki/Serments\_de\_Strasbourg}{Serment de Strasbourg}, au cours duquel Charles~le Chauve du s’\href{https://fr.wikipedia.org/wiki/Serments\_de\_Strasbourg\#Le\_serment\_de\_Charles\_et\_des\_troupes\_de\_Louis\_en\_tudesque}{éxprimer} dans une langue tudesque (parente de l’allemand actuel) pour se faire comprendre des troupes de Louis~le~Germanique.
+}
+
+\longnewglossaryentry{strasbourg}
+{
+  type=fauvelocution,
+    name={Prononcer volontier le serment de Strasbourg en langue romane}
+}
+{
+  Dans un cadre bilingue francophone et gérmanophone, se dit d’un locuteur qui est plus à l’aise dans l’expression en langue allemande que française.
+
+  En référence au \href{https://fr.wikipedia.org/wiki/Serments\_de\_Strasbourg}{Serment de Strasbourg}, au cours duquel Louis~le~Germanique du s’\href{https://fr.wikipedia.org/wiki/Serments\_de\_Strasbourg\#Le\_serment\_de\_Louis\_et\_des\_troupes\_de\_Charles\_en\_langue\_romane}{éxprimer} dans une langue romane pour se faire comprendre des troupes de Charles~le~Chauve.
+}
+
+\newglossaryentry{sestavere}
+{
+  type=fauvelocution,
+    name={Il s’est avéré qu’il ne s’est pas avéré},
+    description={\emph{Humo.}\,De l’expression arabe \enquote{\arabrevert{A_tbt a'nnh lm y_tbt}} au style d’inspiration administrative. Locution ironique pour signifier qu’après une longue periode de certitude sur un sujet, la véracité de ce dernier se voit complettement remise en cause voir démantie.}
+}
+
+\newglossaryentry{pointssurı}
+{
+  type=fauvelocution,
+    name={Mettre les points sur les \exergue{ı}},
+    description={\href{https://fr.wiktionary.org/wiki/mettre\_les\_points\_sur\_les\_i}{Locution} courrante pour laquelle ma particularité est d’utiliser, à l’écrit, un \href{https://fr.wikipedia.org/wiki/I\_sans\_point}{\autonym{ı}} sans point.}
+    }
+
+\newglossaryentry{pignonsurRéseau}
+{
+  type=fauvelocution,
+    name={Avoir pignon sur Réseau},
+    description={Le fait de disposer d’une présence autonome sur un réseau informatique, en particulier l’Internet (par le biais d’un site Web ou Gopher, d’un serveur de courriels propre, ou autre).}
+}
+
+\newglossaryentry{avoirdesovaires}
+{
+  type=fauvelocution,
+    name={Avoir des ovaires},
+    description={Équivalent féminin de la locution \enquote{\href{https://fr.wiktionary.org/wiki/avoir\_des\_couilles}{Avoir des couilles}} par substitution des \enquote{https://fr.wiktionary.org/wiki/gonade}{gonades} \href{https://fr.wiktionary.org/wiki/testicule}{mâles} par leurs homologues féminines. Se dit d’une fille ou d’une femme ayant du courage.}
+}
+
+\newglossaryentry{pleinlesovaire}
+{
+  type=fauvelocution,
+    name={En avoir plein les ovaire},
+    description={Équivalent féminin de la locution \enquote{\href{https://fr.wiktionary.org/wiki/en\_avoir\_plein\_les\_couilles}{En avoir plein les couilles}} par substitution des gonades mâles par leurs homologues féminines. Se dit d’une fille ou d’une femme qui ne peut plus tolérer une chose.}
+}
+
+\longnewglossaryentry{Glaciation}
+{
+  type=fauvelocution,
+    name={Ne pas avoir dégelé depuis la dernière glaciation}
+}
+{
+  Qualifie une personne à l’attitude concervatrice, voir réactionnaire.
+
+  Originellement, entendu à la série humoristique \work{\href{http://www.arte.tv/sites/fr/silex/}{Silex and the City}} à l’épisode intitulé \work{\href{http://www.arte.tv/sites/fr/silex/video/-pMiYv9u2dQ/Evolution\%20pour\%20tous\%20!\%20-\%20Silex\%20and\%20the\%20city\%20saison\%203\%20-\%20ARTE}{L’Évolution pour tous!}}.
+}
+
+\newglossaryentry{entendresang}
+{
+  type=fauvelocution,
+    name={Faire si calme que l’on etend le sang couler dans ses veines},
+    description={Est utilisée dans une situation de silence profond.}
+}
+
+\newglossaryentry{comitionnairedespensees}
+{
+  type=fauvelocution,
+    name={La comitionnaire de nos pensées},
+    description={La langue et, particulièrement, la langue française surtout lorsqu’est fait référence dans le contexte au Serment de Strasbourg.}
+}
+
+\newglossaryentry{trainsguerresdavance}
+{
+  type=fauvelocution,
+    name={Avoir cinq trains et deux guerres d’avance},
+    description={Être à l’avant-garde, jouir d’une avance considérable au point qu’elle en devient irratrapable, distancer beaucoup trop largement ses concurents.}
+}
+
+\longnewglossaryentry{demeurer-kaitaia}
+{
+  type=fauvelocution,
+    name={Demeurer à \exergue{Kaïtaia}}
+}
+{
+  Dissembler de façon diamétrale d’une personne, en être en désaccord exacerbé.
+
+  Note: \exergue{Kaïtaia} est utilisé dans le cas précis où la personne de \bsc{Fauve} est celle avec laquelle le concerné est en désacord, étant donné que cette commune se trouve sur son point antipodal. \exergue{Kaïtaia} est donc une variable qui peut être remplacé pour s’accorder au point antipodal de l’antagoniste s’il diffère de \bsc{Fauve}.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vocabulaire dérisoire
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newglossaryentry{Ztazun}
+{
+  type=fauvehumorvocab,
+    name={Ztazun},
+    description={Hypercontraction du nom \enquote{États-Unis}. Désigne, de façon sarcastique, les États-Unis d’Amérique.}
+}
+
+\newglossaryentry{pommephone}
+{
+  type=fauvehumorvocab,
+    name={pommephone},
+    description={Appelation sarcastique et millitante des términaux de poche produit par le constructeur Apple~Inc.},
+    plural={Pommephones}
+}
+
+\newglossaryentry{TeXoriste}
+{
+  type=fauvehumorvocab,
+    name={\TeX oriste},
+    description={Partisant quelque peut zéllé du language de composition \TeX{}, au point que son avis sur le sujet puisse suciter la crainte.},
+    plural={\TeX oristes}
+}
+
+\newglossaryentry{sempiternel}
+{
+  type=fauvehumorvocab,
+    name={ͳ-ternel},
+    description={Graphie humouristique de \autonym{\href{https://fr.wiktionary.org/wiki/sempiternel}{sempiternel}} et déclinaisons. Remplacement du préfixe \autonym{sempi-} par la lettre grècque \href{https://fr.wikipedia.org/wiki/Sampi}{sampi}.},
+    plural={ͳ-ternels}
+}
+
+\newglossaryentry{xactement}
+{
+  type=fauvehumorvocab,
+    name={xactement},
+    description={Aphérèse du \autology{E} innitial de l’adverbe \autology{\href{https://fr.wiktionary.org/wiki/exactement}{exactement}}. Éxprime de façon souvent éxclamative voir interjective une aprobation énergique.}
+}
+
+\longnewglossaryentry{oxydent}
+{
+  type=fauvelocution,
+    name={oxydent},
+    plural={oxydents}
+}
+{
+  Désigne, de façon péjorative mais plus souvent sarcastique le \href{https://fr.wikipedia.org/wiki/Occident}{monde occidental}.
+
+  \begin{quote}
+    Les oxydentaux ? Des gens particulièrement corosifs.
+  \end{quote}
+}
+
+\newglossaryentry{Hegemonica}
+{
+  type=fauvehumorvocab,
+    name={Hegemonica},
+    description={Designation péjorative de la police de caractère \href{https://fr.wikipedia.org/wiki/Helvetica}{Helvetica}.},
+    plural={Hegemonicas}
+}
