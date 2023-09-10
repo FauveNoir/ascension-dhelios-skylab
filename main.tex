@@ -1,15 +1,476 @@
-\documentclass[a4paper,12pt,oneside,french]{book}
+\documentclass[a4paper,12pt,twoside,french]{book}
 \usepackage[culdelampe]{fauve}
+\usepackage{changepage}
+\usepackage{fancyhdr}
+%\usepackage{endnotes}
+\usepackage{enotez}
+\usepackage{ifthen}
+\usepackage{paracol}
+\usepackage{quoting}
+\usepackage{microtype}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{ragged2e}
+\usepackage{doclicense}
+\usepackage[htt]{hyphenat}
 \input{meta.tex}            % Déffinition des métadonnées.
 %\input{main-glos.tex}
 
+\makeatletter 
+\newcommand\hardnobreakpar{\par\nobreak\@afterheading} 
+\makeatother
+
+\setotherlanguages{arabic}
+
+%\newfontfamily\arabicfont[Ligatures=TeX,Script=Arabic]{Amiri}
+\newfontfamily\arabicfont[Ligatures=TeX,Script=Arabic,Scale=1.4]{Scheherazade}
+\newfontfamily\arabicfonttwo[Script=Arabic]{Reem Kufi}
+\newfontfamily\arabicfonttree[Script=Arabic]{A Thuluth}
+
+% yogh
+\newfontfamily\libertine{Linux Libertine O}
+
+
+\newcommand\campprincipal{Babord}
+\newcommand\campoppose{Tribord}
+
 %\bibliography{./biblio.bib}
+\Character[\textsc{\elena}, fils illégitime d’\roi]{Hélios}{elena}
+\Character[\textsc{\alexas}, précepteur et confident d’\elena{}]{Imhotep}{alexas}
+\Character[Un disciple d’\alexas]{Disciple d’\alexas{}}{disciple}
+\Character[\textsc{\roi}, roi de \campprincipal{}]{Agamemnon}{roi}
+\Character[\textsc{\reine}, reine de \campprincipal{}]{Cixi}{reine}
+\Character[\textsc{\princesse}, fille légitime d’\roi{} et \reine, héritière présomptive du trône de \campprincipal{}]{Freydis}{princesse}
+\Character[Suivantes de \princesse{}]{Suivantes de \princesse{}}{suivantes}
+%\Character[Une suivante de \princesse]{Suivante de \princesse}{suivanteprincesse}
+\Character{Suivante de \princesse{}}{suivanteprincesse}
+\Character[\textsc{\vladimir}, fils légitime d’\roi{} et \reine{}]{Assur\-ba\-nipal}{vladimir}
+\Character[\textsc{\general}, général de \campprincipal{}]{Pyrgopolinice}{general}
+\begin{CharacterGroup}{\hspace{-0.35cm}nobles de \campprincipal{}}
+  \GCharacter{\textsc{\nobleOne}}{Kazoku}{nobleOne}
+  \GCharacter{\textsc{\nobleTwo}}{Boyard}{nobleTwo}
+  \GCharacter{\textsc{\nobleTree}}{Teuctli}{nobleTree}
+\end{CharacterGroup}
+\Character[\textsc{\catin}, maitresse d’\vladimir{}]{Matahari}{catin}
+\Character[\textsc{\darius}, roi du \campoppose{}]{Darius}{darius}
+\Character[Suite de \darius]{Suite de \darius}{dariussuite}
+\Character[\textsc{\ela}, sœur d’\elena{}]{Séléné}{ela}
+\Character[Un lieutenant de \general{}]{Lieutenant}{page}
+\Character[Deux gardes royaux]{Gardes royaux}{kingsgards}
+\Character[\textsc{Chœur}]{Chœur}{choir}
+\Character[\textsc{L’Entremetteuse}, une mère maquerelle]{l’Entremetteuse}{maquerelle}
+\Character[Des soldats de la conspiration]{Soldats de la conspiration}{conspirateurs}
+\Character[Un greffier]{Greffier}{greffier}
+\Character[Un huissier de justice]{Huissier}{huissier}
+\Character[Une chanteuse à l’oud]{Chanteuse}{chanteuse}
+\Character[Un impositeur]{L’impositeur}{impositeur}
+\Character[Des médecins et infirmiers]{Médecins}{medecins}
+\Character{Le médecin}{medecin}
+\Character[Un chapelier]{Le chapelier}{chapelier}
+\Character[\textsc{\cleopatre}, bambin, fille génétique d’\elena et \ela, portée par \catin]{Cléopâtre}{cleopatre}
+\Character[Un prêtre]{Prêtre}{pretre}
+\Character[Le peuple de \campprincipal]{Le peuple}{peuple}
+
+
+\newcounter{allwaysone}
+\stepcounter{allwaysone}
+
+\newcommand\makeactfullletteriffirst[1]{%
+  \ifthenelse{\equal{#1}{\actnumfont \roman{allwaysone}}}%
+  {%
+    premier%
+  }%
+  {%
+    #1%
+  }%
+}%
+
+
+\newcounter{sceneone}
+\stepcounter{sceneone}
+
+\newcommand\makescenefullletteriffirst[1]{%
+  \ifthenelse{\equal{#1}{\scenenumfont \roman{sceneone}}}%
+  {première}%
+  {#1}%
+}%
+
+\makeatletter
+\renewcommand\m@ke@cthead[1]{%
+  \actheadstart
+  {\parindent \z@
+  \ifnum\c@secnumdepth>\m@ne
+  \printsep \printactname \printsep \makeactfullletteriffirst{\printactnum}
+  \fi
+  \printacttitle{#1}
+  \afteract}
+  }
+
+\renewcommand\m@kescenehead[1]{%
+  \sceneheadstart
+  {\parindent \z@
+  \ifnum\c@secnumdepth>\z@
+  \printsep \printscenename \printsep \makescenefullletteriffirst{\printscenenum}
+  \fi
+  \printscenetitle{#1}
+  \afterscene}
+  }
+\makeatother
+
+
+
+%\newcommand\oldStageDir[1]{\StageDir{#1}}
+\newcommand\StageDirII[1]{\noindent\parbox{\textwidth}{\StageDir{\begin{center}\sc#1\nopagebreak[4]\end{center}}}\nopagebreak[4]}
+\newcommand\decors[1]{\noindent\parbox{\textwidth}{\StageDir{\begin{center}{\footnotesize#1}\end{center}}}\nopagebreak[4]}
+
+\renewcommand\namefont{}
+
+
+
+\renewcommand\printscenenum{\scenenumfont \thescene}
+%\renewcommand\casttitlename{}
+%\renewcommand\drampermark{}
+
+\fancypagestyle{fancy2}{%
+  \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter. {##1}}}{}}
+}
+
+\makeatletter
+\pagestyle{fancy2}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\MakeUppercase{Acte \theact{}, Scène \thescene}}
+\fancyhead[RE]{\MakeUppercase{Ascension d’\elena{} Skylab}}
+\fancyfoot{}
+
+\patchcmd{\chaptermark}{\@chapapp\ }{}{}{}
+\renewcommand{\headrulewidth}{0pt}
+\makeatother
+
+
+\newcommand\workingnote[1]{%
+  %
+  \marginpar{\footnotesize{\setromanfont{NotoSansSymbols2-Regular.ttf}🛠}\,#1}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% descritption en TOC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+% Basically the same as for `\l@section` etc, just `\@nodottedtocline` instead of `\@dottedtcline`:
+\newcommand*\l@chapterinfo{\@nodottedtocline{0}{0.0em}{1.5em}}
+\newcommand*\l@sectioninfo{\@nodottedtocline{1}{1.5em}{2.3em}}
+\newcommand*\l@subsectioninfo{\@nodottedtocline{2}{1.5em}{2.3em}}
+\newcommand*\l@subsubsectioninfo{\@nodottedtocline{3}{7.0em}{4.1em}}
+\newcommand*\l@paragraphinfo{\@nodottedtocline{4}{10em}{5em}}
+\newcommand*\l@subparagraphinfo{\@nodottedtocline{5}{12em}{6em}}
+
+% Copied from the book class macro `\@dottedtocline`. Removed the dots and page number
+\def\@nodottedtocline#1#2#3#4#5{%
+  \nopagebreak[4]
+  %\noindent\parbox{\textwidth}{%
+  \ifnum #1>\c@tocdepth \else
+    \vskip \z@ \@plus.2\p@
+    {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+     \parindent #2\relax\@afterindenttrue
+     \interlinepenalty\@M
+     \leavevmode
+     \@tempdima #3\relax
+     \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+     {#4}\nobreak
+     \leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{\,}\mkern \@dotsep
+        mu$}\hfill
+     \nobreak
+     \hb@xt@\@pnumwidth{\hfil\normalfont \normalcolor }%
+     \par}%
+  \fi%}
+}
+
+\makeatother
+
+\def\chapterinfo#1{%
+    \addcontentsline{toc}{chapterinfo}{%
+    \noexpand\numberline{}#1}%
+}
+\def\sectioninfo#1{%
+    \addcontentsline{toc}{sectioninfo}{%
+    \noexpand\numberline{}#1}%
+
+}
+\def\subsectioninfo#1{%
+  \hypersetup{bookmarksdepth=-1}\nopagebreak[4]
+    \addcontentsline{toc}{subsectioninfo}{\nopagebreak[4]%
+    \noexpand\numberline{}\em\small #1}\nopagebreak[4]%
+  \hypersetup{bookmarksdepth=3}\nopagebreak[4]
+}
+
+\def\subsubsectioninfo#1{%
+    \addcontentsline{toc}{subsubsectioninfo}{%
+    \noexpand\numberline{}\em\small #1}%
+}
+% same for subsubsection, etc. ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\sceneinfo[1]{\hardnobreakpar\subsectioninfo{#1}}
+
+%\renewcommand\workingnote[1]{}
+
+\newcommand{\intrat}[1]{
+\par\vspace{\speechskip}\hspace{1.15\speaksindent}
+\textit{Intrat} #1\par\vspace{\speechskip}
+}
+
+\newcommand{\intrant}[1]{
+\par\vspace{\speechskip}\hspace{1.15\speaksindent}
+\textit{Intrant} #1\par\vspace{\speechskip}
+}
+
+\newcommand{\exit}[1]{
+\par\vspace{\speechskip}\hspace{1.15\speaksindent}
+\textit{Exit} #1\par\vspace{\speechskip}
+}
+
+\newcommand{\exeunt}[1]{
+\par\vspace{\speechskip}\hspace{1.15\speaksindent}
+\textit{Exeunt} #1\par\vspace{\speechskip}
+}
+
+\titleformat{\chapter}[display]
+  {\centering \normalsize \huge  \color{black}}{\thechapter}{10pt}{}
+
+\titlespacing*{\chapter}{0pt}{-10pt}{40pt}
+
+\renewenvironment{drama}{\hardnobreakpar\nopagebreak[4]%
+  \if@lnpa\nopagebreak[4]%
+  \PackageWarning{dramatist}{\lnpwarning{a}}\nopagebreak[4]%
+  \fi\nopagebreak[4]%
+  \if@lnps\nopagebreak[4]%
+  \PackageWarning{dramatist}{\lnpwarning{s}}\nopagebreak[4]%
+  \fi\nopagebreak[4]%
+  \list{}{%
+    \labelwidth\speakswidth
+  \itemindent\speaksindent
+  \itemsep\speechskip
+    \parsep\Dparsep
+    \labelsep\Dlabelsep
+    \let\makelabel\speakslabel}%
+  \nopagebreak[4]}
+  {\endlist}
+
+
+\newcommand\credittable{}
+
+\newcommand{\addcredit}[3]
+{
+  %\renewcommand{\credittable}{#1}
+  \gappto\credittable{#1, \enquote{#2}, \url{#3}.  }
+
+}
 
 \begin{document}
   \DTMsetdatestyle{fauvedate}
-  \maketitle
+  %\maketitle
+  \begin{titlepage}
+    \newgeometry{top=0cm,bottom=0cm,left=1cm,right=1cm} 
+    \pdfbookmark[0]{Couverture}{cover}
+    \begin{center}
+      %\vspace*{2cm}
+      %\includegraphics{frontispice-voix-des-airs.pdf}
 
+      \vspace*{0.5cm}
+      %\null
+      %\vfill
+      {
+        \MakeUppercase{
+          \LARGE
+          Ascension\\
+          d’\elena{} skylab\rlap{,}\\
+          {\em{}bâtard de l’Arche}
+        }
+      }
+
+      \vspace{1cm}{\Large{}Tragédie}
+
+      {\large{}\em{}en cinq actes}
+
+      \vspace*{-0.5cm}
+
+      \includegraphics[width=0.8\textwidth]{frontispice-echiquier-celeste.pdf}
+
+      %\vfill
+      \vspace*{0.5cm}
+
+      \begin{adjustwidth}{4.0cm}{4.0cm}
+        \begin{center}
+        \textsc{Dramatis personæ}
+        \end{center}
+        \footnotesize
+   
+        \setlength{\columnseprule}{0.5pt}
+        \setlength{\CharWidth}{1.6cm}
+        \begin{multicols}{2}
+          %\raggedright
+          \dodramperlist{}
+        \end{multicols}
+
+        \begin{center}
+        La scène se déroule dans l’Arche envoyée il y a vingt-huit-milles ans depuis la Terre afin d’atteindre Proxima Centauri b.
+        \end{center}
+      \end{adjustwidth}
+
+      %\vfill
+      %\vspace*{1.5cm}
+
+      \makeatletter
+        \vspace{0cm}\large \@author
+
+      \vspace{.5cm}\large \@date
+      \makeatother
+
+
+      \vspace*{2cm}
+      \vfill
+    \end{center}
+    \restoregeometry
+  \end{titlepage}
+
+
+  \frontmatter
+
+
+  \thispagestyle{empty}
+  \pdfbookmark[0]{Page de garde}{garde}
+  \null\vfill           % Pression du haut pour condenser les informations de crédit en bas de la page.
+
+  \begin{center}
+    {
+    \Huge
+     \MakeUppercase{
+       Ascension d’\elena{} skylab}
+       \vspace{0.5em}
+       
+       \MakeUppercase{{\em{}bâtard de l’Arche}
+     }
+     }
+  \end{center}
+
+  \vfill\null           % Pression du haut pour condenser les informations de crédit en bas de la page.
+  \cleardoublepage
+  
+%  \ifodd\value{page}\thispagestyle{empty}\hbox{}\newpage\fi
+  \thispagestyle{empty}
+  \pdfbookmark[0]{Introduction}{dedicace}
+  \null\vfill           % Pression du haut pour condenser les informations de crédit en bas de la page.
+\addcredit{GFDL | \ccbysa{} | \ccby}{Käyttäjä:kompak}{https://commons.wikimedia.org/wiki/File:Pschent.svg}
+  \begin{flushright}
+    \begin{minipage}[t]{0.6\textwidth}%
+%     \begin{center}
+%       \phantom{\includegraphics[height=5.8em]{pegase.pdf}}
+%     \end{center}
+
+      %\lettrine{J}{e}
+      \parshape=4
+      0pt \textwidth
+      0.1\textwidth 0.9\textwidth
+      0.08\textwidth 0.92\textwidth
+      0pt                \textwidth
+      \noindent{}\raisebox{-\height+1.365cm}[0cm][0pt]{
+        \hspace{-0.2cm}\includegraphics[height=5.8em]{J-lettrine-pshent.pdf}%
+      }%
+      \hspace{-0.2cm}{\textsc{e}}
+      me suis réveillé un matin avec le  souvenir d’un rêve étrange. C’était le songe d’une pièce qui s’ouvrait ainsi \enquote{Le Divin a donné à mon père un seul enfant. Le diable m’offrit alors en guise de cadeau de baptême.}, réplique prononcée par un personnage dont le nom me vint aux lèvres dès mon premier mouvement de paupière : \elena{}, \elena{} Skylab. Me revint aussitôt en mémoire la scène macabre du césar sur son lit qui, inconsolable, enlaçait le corps autant mutilé que sanguinolent d’une défunte femme.
+
+      À cet instant, je ne savais ni qui était cet \elena{}, ni qui était le monarque, ni qui était la défunte, ni même où ils étaient.
+
+      Je fis part de tout cela à un ami qui me fit remarquer \enquote{Tu as maintenant une pièce intéressante à écrire.}. Époussetant à peine les grains de sébum de ma caroncule, je lui répondis \enquote{Hélas.}.
+
+%     \begin{center}
+%       \includegraphics[height=5.8em]{pegase.pdf}
+%     \end{center}
+    \end{minipage}%
+  \end{flushright}
+
+  \vfill\null                % Espace vértical.
+
+  \mainmatter
   \input{contenu.tex}       % L’œuvre proprement dite.
+   \pdfbookmark[0]{Ultima pagina}{ultima}
+% \edef\measurepage{\the\dimexpr\pagegoal-\pagetotal-\baselineskip\relax}
+
+
+% \null\vfill
+
+% \begin{center}
+%   \pdfbookmark[0]{Ultima pagina}{ultima}
+%   \includegraphics[height=\measurepage/2]{frontispice-moai.pdf}
+% \end{center}
+
+
+
+  %\null\vfill
+
+  %\newpage
+  \null\cleardoublepage
+  \thispagestyle{empty}
+  \pdfbookmark[0]{Post-scirptum}{Post-scriptum}
+  \null\vfill           % Pression du haut pour condenser les informations de crédit en bas de la page.
+  \addcredit{GFDL | \ccbysa}{Jeff Dahl}{https://commons.wikimedia.org/wiki/File:Blue\_crown.svg}
+  \begin{flushright}
+    \begin{minipage}[t]{0.6\textwidth}%
+      \lettrine[lines=3]{V\llap{\raisebox{1.55ex}{\includegraphics[height=0.92em]{khepresh_typographique.pdf}\hspace{-0.05em}}}}{oilà}
+      %\lettrine[lines=3]{V\llap{\raisebox{0.68ex}{\includegraphics[height=1em]{Blue_crown.pdf}\hspace{-0.2em}}}}{\hspace{0.2em}oilà}
+      désormais la pièce écrite, relue, et corrigée. Tandis que \texttt{ls -lt -{}-time=creation} me fait voir que les premiers jets de ce projets datent du 2023 avril 22, je me rend compte maintenant que nous sommes en septembre, soit près de sept mois \incise{gestation de guépards} après l’exhortation de mon ami. M’étant acquitté de la tache, j’espère Dereckson satisfait du résultat, car des rêves que je ferais, je ne lui en raconterais plus aucun !
+
+      \vspace{0.5cm}
+
+      \hfill 2023 septembre 3
+    \end{minipage}%
+  \end{flushright}
+
+  \vfill\null                % Espace vértical.
+
+  \backmatter
+  \thispagestyle{empty}
+  \null\cleardoublepage
+
+  %\pdfbookmark[0]{Table des matières}{Table des matières}
+  \fancyhead[LO]{Table des matières}
+  \addcontentsline{toc}{chapter}{Table des matières}
+  \tableofcontents
+
+  \cleardoublepage
+  \def\enotesize{\normalsize}
+  \setenotez{list-name=Notes}
+  \addcontentsline{toc}{chapter}{Notes}
+  \printendnotes
+
+  \null
+  %\clearpage
+  \null\vfill
+  \thispagestyle{empty}
+  \noindent{\Large Crédits}
+  %\vspace{1em}
+
+  \noindent\credittable{}
+
+  \null
+  \clearpage
+  \null
+  %\cleardoublepage
+  \thispagestyle{empty}
+  \pdfbookmark[0]{Quatrième de couverture}{quatrieme}
+  \newgeometry{left=0cm,bottom=0cm,top=0cm,bottom=0cm,inner=0cm,outer=0cm}
+
+  \null\vfill
+
+    \noindent\includegraphics[width=\textwidth]{courrone-innacessible.pdf}
+
+    
+
+  \null\vfill
+
+
   %
   %
   %\printbibliography

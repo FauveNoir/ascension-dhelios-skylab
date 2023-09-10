@@ -4,19 +4,19 @@
 
 %% Chargement des extensions primordiales.
 \RequirePackage{fontspec} % Utilisation de XeTeX.
-\RequirePackage[latin,russian,greek,french,francais]{babel} % Le Français est la langue principale.
+\RequirePackage[french,francais]{babel} % Le Français est la langue principale.
 \RequirePackage{polyglossia}
 \RequirePackage{xunicode}
 \RequirePackage{fontenc}
 \RequirePackage[babel=true,maxlevel=3]{csquotes} % csquotes va utiliser la langue définie dans babel et augmenter la limitation d’imbrication à 3 (LaTeX appliqué aux sciences humaines, p.46).
-\RequirePackage[unicode=true,colorlinks=true,urlcolor=magenta]{hyperref}
+\RequirePackage[unicode=true,colorlinks=true,urlcolor=black]{hyperref}
 \RequirePackage{url}
 \RequirePackage{paralist}
-\RequirePackage{bigfoot}
+%\RequirePackage{bigfoot}
 \RequirePackage{graphicx}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
-\RequirePackage{arabtex}
+%\RequirePackage{arabtex}
 \RequirePackage[load-configurations = abbreviations]{siunitx}
 \RequirePackage[nonumberlist,nopostdot,toc]{glossaries}
 \RequirePackage{lettrine}
@@ -28,7 +28,7 @@
 \RequirePackage{epigraph}
 \RequirePackage{manyfoot}
 \RequirePackage{subscript}
-\RequirePackage{titling}
+%\RequirePackage{titling}
 %\RequirePackage{libertine}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{xspace} % Le paquet xspace sert essentiellement à la redéffinition de la page de garde.
@@ -46,7 +46,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage[mackeys=symbols]{menukeys}
 \RequirePackage{qrcode} % Imprime des qrcodes grâce à `\qrcode{}` essentiellement utilisé avec l’option `littera`.
-\RequirePackage[texcoord]{eso-pic} % Ce paquet permet d’insérer le qrcode à un endroit fixe, avec, pour origine du repère, le coint haut gauche.
+%\RequirePackage[texcoord]{eso-pic} % Ce paquet permet d’insérer le qrcode à un endroit fixe, avec, pour origine du repère, le coint haut gauche.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,7 +118,7 @@ detect-all,
 
 % Déffinitions de Polyglossia
 \setdefaultlanguage{french}
-\setotherlanguages{greek,russian,aribic}
+%\setotherlanguages{greek,russian,aribic}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cul de lampe adaptable à la hauteure de l’espace restant.            %
@@ -339,7 +339,7 @@ detect-all,
 % Éviter les veuves et orfelins
 \widowpenalty=10000
 \clubpenalty=10000
-\raggedbottom
+%\raggedbottom
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                      Commandes sémantiques                           %
@@ -380,10 +380,10 @@ detect-all,
 \newcommand{\ancientgrec}[1]{{\greekfont\textgreek[variant=ancient]{#1}}}
 \newcommand{\english}[1]{\textenglish{#1}}
 % Déclarations des unités de cryptomonaies pour siunitx
-\DeclareSIUnit{\btc}{฿}
-\DeclareSIUnit{\ltc}{Ł}
-\DeclareSIUnit{\doge}{Ð}
-\DeclareSIUnit{\pot}{Ᵽ}
+%\DeclareSIUnit{\btc}{฿}
+%\DeclareSIUnit{\ltc}{Ł}
+%\DeclareSIUnit{\doge}{Ð}
+%\DeclareSIUnit{\pot}{Ᵽ}
 \newenvironment{latin}% Alignement de la typographie du latin sur celle en usage en français.
 {\begin{hyphenrules}{latin}}%
 {\end{hyphenrules}}
@@ -495,8 +495,8 @@ detect-all,
 \else
 \hypersetup{
   colorlinks=true,                                % Colorise les liens.
-  urlcolor= magenta,                                 % Couleur des hyperliens.
-  linkcolor= magenta                                % Couleur des liens internes.
+  urlcolor= black,                                 % Couleur des hyperliens.
+  linkcolor= black                                % Couleur des liens internes.
 }
   \newcommand{\ismonochromeIscolerd}[2]{#2}
 \fi
@@ -590,6 +590,7 @@ detect-all,
 % Francisation du paquet `dramatist`                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\scenename}{Scène}          % Permet à la commande `\newscene` d’utiliser le mot français « Scène ».
+\renewcommand{\actname}{Acte}          % Permet à la commande `\newscene` d’utiliser le mot français « Scène ».
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Justification à droite des noms de personnages                       %
@@ -613,28 +614,26 @@ detect-all,
 
 
 % Redéffinition à proprement parler de `dramatist`.
-\makeatletter
-\renewenvironment{drama}[3]
-{%
-  \settowidth{\speakswidth}{\speaksfont{#3}\speaksdel\hspace{\speechskip}}
-  \begin{changemargin}{#1}{#2}
-    \if@lnpa
-      \PackageWarning{dramatist}{\lnpwarning{a}}
-    \fi
+%\makeatletter
+%\renewenvironment{drama}
+%{%
+%%   \if@lnpa
+%%     \PackageWarning{dramatist}{\lnpwarning{a}}
+%%   \fi
+%%
+%%   \if@lnps
+%%     \PackageWarning{dramatist}{\lnpwarning{s}}
+%%   \fi
+%    \begin{description}[labelsep=0.5em,font=\normalfont\sc]%
+%      \setlength\itemsep{0em}
+%}%
+%{%
+%    \end{description}
+%}
 %
-    \if@lnps
-      \PackageWarning{dramatist}{\lnpwarning{s}}
-    \fi
-    \begin{itemize}[labelwidth=\speakswidth,leftmargin=!]%
-}%
-{%
-    \end{itemize}
-  \end{changemargin}
-}
-
-\patchcmd{\speaker}{\item[#1\speaksdel]}{\item[\speaksfont#1]}{}{}
-\patchcmd{\@character}{\item[#1\speaksdel]}{\item[\speaksfont#1]}{}{}
-\makeatother
+%\patchcmd{\speaker}{\item[#1\speaksdel]}{\item[\speaksfont#1]}{}{}
+%\patchcmd{\@character}{\item[#1\speaksdel]}{\item[\speaksfont#1]}{}{}
+%\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%FIN%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%FIN%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

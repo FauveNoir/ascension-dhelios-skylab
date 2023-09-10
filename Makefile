@@ -3,7 +3,7 @@
 ########################################################################
 # Variables primordiales                                               #
 ########################################################################
-NAME          = essors-et-decadence-delena# # Le nom du projet, cette variable sera       #
+NAME          = ascension-dhelios-skylab# # Le nom du projet, cette variable sera       #
                          # placée à la racine du nom de fichier de     #
                          # sortie                                      #
 ########################################################################
@@ -131,6 +131,7 @@ all:
 
 compile:
 	${COMPIL} ;
+	${COMPIL} ;
 	#$(MAKEGLOS) ${PROCNAME}.glo ; # Traitmeent du glossaire [À décomenter si besoin de glossaire].
 ifeq ($(SCHOLARLY),true) # Le bloc suivant n’est actif que pour les projets dévelopant une biédition.
 	#$(BIB)      ${PROCNAME} ; # Traitement de la bibliographie [À décomenter si besoin de bibliographie].
@@ -158,6 +159,14 @@ else # Sinon, avertir de la perte de donnée occasionée par les formats non-ada
 	echo "AVIS : Vous tentez d’imprimer une version non adaptée à cet effet."; echo "Par exemple, les liens sont cliquables et n’aparraissent pas au tirrage, ce qui constitue une perte d’information." ; ANSWERISCORRECT="no" ; read -p "Souhaitez vous continuer, tout de même ? [(N)on|(o)ui] " WHATUSERWANTTODO ; while [[ $$ANSWERISCORRECT == "no" ]] ; do if [[ $$WHATUSERWANTTODO == "o" ]]; then ${PRINT} ${PROCNAME}.pdf ; ANSWERISCORRECT="yes" ; elif [[ $$WHATUSERWANTTODO == "n" ]]; then echo "Fin de la production. Il n’y a rien à faire." ; ANSWERISCORRECT="yes" ; else read -p "La réponse « $$WHATUSERWANTTODO » est inconue. Veuillez saisir une réponse valide [(N)on|(o)ui] " WHATUSERWANTTODO ; fi ; done
 endif
 
+correctionfiles: ${PROCNAME}.pdf
+	pdftotext ${PROCNAME}.pdf
+	tar zcvf ${PROCNAME}.gzip ${PROCNAME}.pdf ${PROCNAME}.txt contenu.tex main.tex
+
+
+imposition: ${PROCNAME}.pdf
+	./covertoprint.sh ${PROCNAME}.pdf
+	./imposition.sh ${PROCNAME}.pdf
 ########################################################################
 # Traitement des arguments de nétoyage                                 #
 ########################################################################
