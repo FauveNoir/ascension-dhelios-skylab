@@ -131,11 +131,11 @@ all:
 
 compile:
 	${COMPIL} ;
-	${COMPIL} ;
+	#${COMPIL} ;
 	#$(MAKEGLOS) ${PROCNAME}.glo ; # Traitmeent du glossaire [À décomenter si besoin de glossaire].
 ifeq ($(SCHOLARLY),true) # Le bloc suivant n’est actif que pour les projets dévelopant une biédition.
-	#$(BIB)      ${PROCNAME} ; # Traitement de la bibliographie [À décomenter si besoin de bibliographie].
-	#${FULLCOMPIL}
+	$(BIB)      ${PROCNAME} ; # Traitement de la bibliographie [À décomenter si besoin de bibliographie].
+	${FULLCOMPIL}
 endif
 
 simplecomplie:

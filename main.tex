@@ -14,7 +14,20 @@
 \usepackage{ragged2e}
 \usepackage{doclicense}
 \usepackage[htt]{hyphenat}
-\input{meta.tex}            % Déffinition des métadonnées.
+\usepackage{tikz}% <<<<<<<<<<<
+\usepackage{eso-pic}% <<<<<<<<<<<
+\usetikzlibrary{tikzmark}% <<<<<<<<<<<
+\usepackage{verbatim}
+\usepackage{pbox}
+\usepackage{eqparbox}
+\usepackage{listings}
+\usepackage{zxjatype}
+\usepackage[ipa]{zxjafont}
+
+\XeTeXcharclass`’=\XeTeXcharclass`A
+\XeTeXcharclass`…=\XeTeXcharclass`A
+\XeTeXcharclass`—=\XeTeXcharclass`A
+
 %\input{main-glos.tex}
 
 \makeatletter 
@@ -32,14 +45,16 @@
 \newfontfamily\libertine{Linux Libertine O}
 
 
-\newcommand\campprincipal{Babord}
+\newcommand\campprincipal{Ba\-bord}
 \newcommand\campoppose{Tribord}
 
-%\bibliography{./biblio.bib}
+\bibliography{./intern.bib}
+\bibliography{./bibtexselfentry.bib}
+
 \Character[\textsc{\elena}, fils illégitime d’\roi]{Hélios}{elena}
 \Character[\textsc{\alexas}, précepteur et confident d’\elena{}]{Imhotep}{alexas}
 \Character[Un disciple d’\alexas]{Disciple d’\alexas{}}{disciple}
-\Character[\textsc{\roi}\,XXI, roi de \campprincipal{}]{Agamemnon}{roi}
+\Character[\textsc{\roi}\,\textsc{xxi}, roi de \campprincipal{}]{Aga\-mem\-non}{roi}
 \Character[\textsc{\reine}, reine de \campprincipal{}]{Cixi}{reine}
 \Character[\textsc{\princesse}, fille légitime d’\roi{} et \reine, héritière présomptive du trône de \campprincipal{}]{Freydis}{princesse}
 \Character[Suivantes de \princesse{}]{Suivantes de \princesse{}}{suivantes}
@@ -53,13 +68,13 @@
   \GCharacter{\textsc{\nobleTree}}{Teuctli}{nobleTree}
 \end{CharacterGroup}
 \Character[\textsc{\catin}, maitresse d’\vladimir{}]{Matahari}{catin}
-\Character[\textsc{\darius}\,XV, roi du \campoppose{}]{Darius}{darius}
+\Character[\textsc{\darius}\,\textsc{xv}, roi du \campoppose{}]{Darius}{darius}
 \Character[Suite de \darius]{Suite de \darius}{dariussuite}
 \Character[\textsc{\ela}, sœur d’\elena{}]{Séléné}{ela}
 \Character[Un lieutenant de \general{}]{Lieutenant}{page}
 \Character[Deux gardes royaux]{Gardes royaux}{kingsgards}
 \Character[\textsc{Chœur}]{Chœur}{choir}
-\Character[\textsc{L’Entremetteuse}, une mère maquerelle]{l’Entremetteuse}{maquerelle}
+\Character[{L’Entremetteuse}, une mère ma\-que\-relle]{l’Entremetteuse}{maquerelle}
 \Character[Des soldats de la conspiration]{Soldats de la conspiration}{conspirateurs}
 \Character[Un greffier]{Greffier}{greffier}
 \Character[Un huissier de justice]{Huissier}{huissier}
@@ -268,6 +283,8 @@
 
 }
 
+\setlength{\epigraphrule}{0pt}
+\input{meta.tex}            % Déffinition des métadonnées.
 \begin{document}
   \DTMsetdatestyle{fauvedate}
   %\maketitle
@@ -301,7 +318,7 @@
       %\vfill
       \vspace*{0.5cm}
 
-      \begin{adjustwidth}{4.0cm}{4.0cm}
+      \begin{adjustwidth}{3.5cm}{3.5cm}
         \begin{center}
         \textsc{Dramatis personæ}
         \end{center}
@@ -315,7 +332,7 @@
         \end{multicols}
 
         \begin{center}
-        La scène se déroule dans l’Arche envoyée il y a vingt-huit-milles ans depuis la Terre afin d’atteindre Proxima Centauri b.
+        La scène se déroule dans l’Arche envoyée il y a vingt-huit-mille ans depuis la Terre afin d’atteindre Proxima Centauri b.
         \end{center}
       \end{adjustwidth}
 
@@ -345,14 +362,38 @@
 
   \begin{center}
     {
-    \Huge
-     \MakeUppercase{
-       Ascension d’\elena{} skylab}
-       \vspace{0.5em}
-       
-       \MakeUppercase{{\em{}bâtard de l’Arche}
-     }
-     }
+      \vphantom{\parbox[c]{\textwidth}{
+        \vspace{2em}
+        \large
+        \begin{flushright}
+          {\em Scientia potentia est.}\\
+%
+          {\normalsize Thomas \textsc{Hobbes}. {\em Léviathan}.}
+        \end{flushright}
+      }}
+
+      {
+        \Huge
+        \MakeUppercase{
+          Ascension d’\elena{} skylab}
+          \vspace{0.5em}
+          
+          \MakeUppercase{{\em{}bâtard de l’Arche}
+        }
+      }
+
+      %\raisebox{-1.55ex}%
+      %\vspace{\baselineskip}
+      {
+        \vspace{2em}
+        \large
+        \begin{flushright}
+          {\em Scientia potentia est.}\\
+%
+          {\normalsize Thomas \textsc{Hobbes}. {\em Léviathan}.}
+        \end{flushright}
+      }
+    }
   \end{center}
 
   \vfill\null           % Pression du haut pour condenser les informations de crédit en bas de la page.
@@ -360,7 +401,7 @@
   
 %  \ifodd\value{page}\thispagestyle{empty}\hbox{}\newpage\fi
   \thispagestyle{empty}
-  \pdfbookmark[0]{Introduction}{dedicace}
+  \pdfbookmark[0]{Avant-propos}{Avant-propos}
   \null\vfill           % Pression du haut pour condenser les informations de crédit en bas de la page.
 \addcredit{GFDL | \ccbysa{} | \ccby}{Käyttäjä:kompak}{https://commons.wikimedia.org/wiki/File:Pschent.svg}
   \begin{flushright}
@@ -436,35 +477,175 @@
 
   %\pdfbookmark[0]{Table des matières}{Table des matières}
   \fancyhead[LO]{Table des matières}
-  \addcontentsline{toc}{chapter}{Table des matières}
   \tableofcontents
+  \addcontentsline{toc}{chapter}{Table des matières}
 
   \cleardoublepage
   \def\enotesize{\normalsize}
   \setenotez{list-name=Notes}
-  \addcontentsline{toc}{chapter}{Notes}
   \printendnotes
+  \addcontentsline{toc}{chapter}{Notes}
 
   \null
   %\clearpage
   \null\vfill
   \thispagestyle{empty}
-  \noindent{\Large Crédits}
-  %\vspace{1em}
+  \noindent{Crédits graphiques}
+  \vspace{0.5em}
 
-  \noindent\credittable{}
+  {
+
+    \footnotesize{
+
+      \noindent\credittable{}
+    }
+
+  }
 
   \null
-  \clearpage
+  \pagestyle{empty}
+  \clearpage\null\clearpage
+  %\null
+  %\cleardoublepage
+  %\null
+  %\clearpage
+
+  \newgeometry{top=2cm,bottom=2cm,inner=4cm,outer=5cm}
+    \begin{center}
+    \null\vfill
+
+      \footnotesize
+
+
+      %\MakeUppercase{\doclicenseLongNameRef}
+
+      \pdfbookmark[0]{Colophon}{colophon}
+      \vspace{-10em}
+      \includegraphics[width=2.5cm]{ecu-fauve.pdf}
+
+
+      \vspace{4em}
+
+
+      \MakeUppercase{Écrit en l’an 2023 de l’Ère commune.}
+
+      \MakeUppercase{Correspondant à l’an 1445 \emph{Anno Hegiræ}.}
+
+      \MakeUppercase{Cet ouvrage a été composé avec \LaTeX, logiciel libre.}
+
+      \vspace{1em}
+      *
+
+      \emph{La copie est l’action par laquelle une ressource culturelle se voit abstraite de son support initial pour être profitable au plus grand nombre et diffuser le savoir qui y est contenu. Par la copie, le savoir présent dans un ouvrage est multiplié, s’accroît et s’enrichit.}
+
+      \emph{C’est pourquoi, vous êtes vivement encouragés à copier, modifier, améliorer, et redistribuer le présent ouvrage dans le respect de la licence.}
+
+      \emph{{\uppercase{La copie fait vivre le livre !}}}
+
+     % \fineseparator
+
+      \vspace{1em}
+      *
+
+      \textsc{Sujets :} arche interstellaire, voyage spatial, voyage transgénérationnel  ; crise de succession, intrigues de cours, manipulation, quête du pouvoir, trahison, ruse ; manipulation génétique, eugénisme ; violence sociale, violence politique, alter-humanité.
+
+      \vspace{1em}
+
+      Vous pouvez citer cet ouvrage par la ligne bibliographique :
+
+      \fullcite{fauve2023ascensionHeliosSkylab}.
+
+      \vspace{1em}
+
+      \makeatletter
+      \preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
+      \makeatother
+      \noindent{}Entrée Bib\TeX{} :
+
+      \newlength{\bibentrywidth}%
+      \settowidth{\bibentrywidth}{\texttt{\lstinputlisting{bibtexselfentry.bib}}} % Stocke la largeur dans \bibentrywidth
+%
+	  \vspace{-1em}
+      \begin{minipage}{\bibentrywidth}
+	  \vspace{-1em}
+      \unskip\texttt{\lstinputlisting{bibtexselfentry.bib}}
+      \end{minipage}
+
+%\paragraph{}
+    \begin{tabular}{ c c c c }
+    CDU   & ББК   &  LLC &  日本十進分類法 \\
+    792.2 & 84(2) &  PN2000 & 952 \\
+    821   & 83    &  PN3448.S45 & 953
+    \end{tabular}
+
+      %\vspace{3em}
+
+      %\includegraphics[width=3.5cm]{terasse-fauve.pdf}
+
+
+    \vfill
+    \null
+
+
+
+
+
+    \end{center}
+    \restoregeometry
+
+
+
   \null
   %\cleardoublepage
   \thispagestyle{empty}
-  \pdfbookmark[0]{Quatrième de couverture}{quatrieme}
   \newgeometry{left=0cm,bottom=0cm,top=0cm,bottom=0cm,inner=0cm,outer=0cm}
 
   \null\vfill
+  \pdfbookmark[0]{Quatrième de couverture}{quatrieme}
 
-    \noindent\includegraphics[width=\textwidth]{courrone-innacessible.pdf}
+  %\AtPageUpperLeft{%
+    %\noindent\includegraphics[width=\textwidth]{courrone-innacessible.pdf}
+  %}%
+
+
+\begin{center}
+\includegraphics[width=\textwidth]{courrone-innacessible-reduite.pdf}
+
+\vspace{4cm}
+
+\newenvironment{stretchpars}
+  {\par\setlength{\parfillskip}{0pt}}
+  {\par}
+
+\tikzmarknode{mini}{\begin{minipage}{8.0cm}%
+%Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\begin{stretchpars}%
+Sur l’Arche envoyée il y’a vingt-huit-mille ans depuis la Terre vers Proxima centauri~b, se battent les royaumes de \campprincipal{} et de \campoppose{}. Au sein du premier, le prince illégitime \elena, à force d’intrigues, lutte afin d’échapper au trépas auquel le vouent ses frères légitimes et les grands du royaume, tandis que la guerre avec le \campoppose{} éclate.
+\end{stretchpars}%
+\end{minipage}}
+
+\begin{tikzpicture}[remember picture, overlay]  
+    \node[shift={(1em, 1ex)}, at=(mini.north east)] (NE)   {\includegraphics[width=0.5cm]{coin-NE.pdf}};
+    \node[shift={(-1em, 1ex)}, at=(mini.north west)] (NW)  {\includegraphics[width=0.5cm]{coin-NW.pdf}};
+    \node[shift={(1em, -2.0ex)}, at=(mini.south east)] (SE) {\includegraphics[width=0.5cm]{coin-SE.pdf}};
+    \node[shift={(-1em, -2.0ex)}, at=(mini.south west)] (SW) {\includegraphics[width=0.5cm]{coin-SW.pdf}};
+
+	% Latéraux
+    \draw[line width=0.7pt] ([xshift=1.29em,yshift=1em]NW.south west)  -- ([xshift=1.29em,yshift=-0.35em]SW.north west)  ;
+    \draw[line width=0.7pt] ([xshift=-1.29em,yshift=1em]NE.south east)  -- ([xshift=-1.29em,yshift=-0.35em]SE.north east)  ;
+
+	% Bas
+    \draw[line width=0.7pt] ([xshift=-0.37em,yshift=-0.62em]SW.north east)  -- ([xshift=0.37em,yshift=-0.62em]SE.north west)  ;
+
+	% Haut
+    \draw[line width=0.7pt] ([xshift=-0.37em,yshift=-0.93em]NW.north east)  -- ([xshift=0.37em,yshift=-0.93em]NE.north west)  ;
+
+	% Titre
+	\path ([yshift=-0.118em]NW.north east) -- node[midway, fill=white, inner sep=0] {\includegraphics[width=0.5cm]{titre-W.pdf} \textbf{Argument} \includegraphics[width=0.5cm]{titre-E.pdf}} ([yshift=-0.118em]NE.north west);
+
+\end{tikzpicture}
+\end{center}
+
 
     
 
