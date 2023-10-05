@@ -283,6 +283,16 @@
 
 }
 
+
+\usepackage{titlesec}
+%\titleformat{\paragraph}[wrap]{\centering\bfseries\normalsize}{}{0}{\raggedright\parbox[t][\dimexpr\height-1\baselineskip]{0.3\textwidth}}
+%\titleformat{\paragraph}[wrap]{\centering\normalsize}{}{0}{}
+\titleformat{\paragraph}[wrap]{\centering\bfseries\normalsize\small}{}{0}{\vspace{-1em}}
+\titlespacing*{\paragraph}{0.3\textwidth}{3.25ex plus1ex minus.2ex}{0.75em}%}
+
+\titleformat{\subparagraph}[runin]{\em\normalsize}{}{1em}{}[.]
+
+
 \setlength{\epigraphrule}{0pt}
 \input{meta.tex}            % Déffinition des métadonnées.
 \begin{document}
@@ -440,19 +450,10 @@
 % \edef\measurepage{\the\dimexpr\pagegoal-\pagetotal-\baselineskip\relax}
 
 
-% \null\vfill
-
-% \begin{center}
-%   \pdfbookmark[0]{Ultima pagina}{ultima}
-%   \includegraphics[height=\measurepage/2]{frontispice-moai.pdf}
-% \end{center}
-
-
-
-  %\null\vfill
+  \backmatter
 
   %\newpage
-  \null\cleardoublepage
+  %\null\cleardoublepage
   \thispagestyle{empty}
   \pdfbookmark[0]{Post-scirptum}{Post-scriptum}
   \null\vfill           % Pression du haut pour condenser les informations de crédit en bas de la page.
@@ -470,8 +471,35 @@
   \end{flushright}
 
   \vfill\null                % Espace vértical.
+% \null\vfill
 
-  \backmatter
+% \begin{center}
+%   \pdfbookmark[0]{Ultima pagina}{ultima}
+%   \includegraphics[height=\measurepage/2]{frontispice-moai.pdf}
+% \end{center}
+
+  \null\clearpage
+
+  \newgeometry{left=0mm,right=0mm,top=0cm,bottom=0cm}
+    \addcredit{\ccbysa}{Fenn-O-maniC}{https://commons.wikimedia.org/wiki/File:Arms_of_Oxfordshire_County_Council.svg}%
+    \addcredit{\ccbysa}{Trondivers}{https://commons.wikimedia.org/wiki/File:T08_Grossherzog.svg}%
+    \begin{figure}[p]% will be the left-side figure
+        \adjincludegraphics[width=\textwidth,trim={0 0 {.5\width} 0},clip]{courone-ensanglantée.pdf}
+    \end{figure}
+    \begin{figure}[p]% will be the right-side figure
+        \adjincludegraphics[width=\textwidth,trim={{.5\width} 0 0  0},clip]{courone-ensanglantée.pdf}
+    \end{figure}
+  \restoregeometry
+
+%\addtocontents{toc}{\protect\newpage}
+%\addtocontents{toc}{\protect\enlargethispage{\baselineskip}}
+\addtocontents{toc}{\protect\pagebreak} % ATTENTION ajustement conjoncturel
+
+  \input{postface.tex}
+
+
+  %\null\vfill
+
   \thispagestyle{empty}
   \null\cleardoublepage
 
@@ -536,9 +564,9 @@
       \vspace{1em}
       *
 
-      \emph{La copie est l’action par laquelle une ressource culturelle se voit abstraite de son support initial pour être profitable au plus grand nombre et diffuser le savoir qui y est contenu. Par la copie, le savoir présent dans un ouvrage est multiplié, s’accroît et s’enrichit.}
+      \emph{La copie est l’action par laquelle une ressource culturelle se voit abstraite de son support initial pour être profitable au plus grand nombre et diffuser le savoir qui y est contenu. Par la copie, le savoir présent dans un ouvrage est multiplié, s’accroît, et s’enrichit.}
 
-      \emph{C’est pourquoi, vous êtes vivement encouragés à copier, modifier, améliorer, et redistribuer le présent ouvrage dans le respect de la licence.}
+      \emph{C’est pourquoi, vous êtes vivement encouragé à copier, modifier, améliorer, et redistribuer le présent ouvrage dans le respect de la licence.}
 
       \emph{{\uppercase{La copie fait vivre le livre !}}}
 
