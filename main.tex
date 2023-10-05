@@ -23,6 +23,7 @@
 \usepackage{listings}
 \usepackage{zxjatype}
 \usepackage[ipa]{zxjafont}
+\usepackage{marginnote}
 
 \XeTeXcharclass`’=\XeTeXcharclass`A
 \XeTeXcharclass`…=\XeTeXcharclass`A
@@ -493,13 +494,15 @@
 
 %\addtocontents{toc}{\protect\newpage}
 %\addtocontents{toc}{\protect\enlargethispage{\baselineskip}}
-\addtocontents{toc}{\protect\pagebreak} % ATTENTION ajustement conjoncturel
+%\addtocontents{toc}{\protect\pagebreak} % ATTENTION ajustement conjoncturel
 
   \input{postface.tex}
+  %\thispagestyle{empty} % /!\ Attention, conjoncturel.
 
 
   %\null\vfill
 
+  %\thispagestyle{empty}% /!\ Attention, conjoncturel.
   \null\cleardoublepage
 
   %\pdfbookmark[0]{Table des matières}{Table des matières}

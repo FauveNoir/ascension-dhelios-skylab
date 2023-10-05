@@ -427,6 +427,20 @@
 \end{quotation}
 
 
+  \newgeometry{left=0mm,right=0mm,top=0cm,bottom=0cm}
+    \addcredit{\ccbysa}{Fenn-O-maniC}{https://commons.wikimedia.org/wiki/File:Arms_of_Oxfordshire_County_Council.svg}%
+    \addcredit{\ccbysa}{Trondivers}{https://commons.wikimedia.org/wiki/File:T08_Grossherzog.svg}%
+    \begin{figure}[p]% will be the left-side figure
+        \adjincludegraphics[width=\textwidth,trim={0 0 {.5\width} 0},clip]{courone-ensanglantée.pdf}
+    \end{figure}
+    \begin{figure}[p]% will be the right-side figure
+        \adjincludegraphics[width=\textwidth,trim={{.5\width} 0 0  0},clip]{courone-ensanglantée.pdf}
+    \end{figure}
+  \restoregeometry
+
+%\addtocontents{toc}{\protect\newpage}
+%\addtocontents{toc}{\protect\enlargethispage{\baselineskip}}
+\addtocontents{toc}{\protect\pagebreak} % ATTENTION ajustement conjoncturel
 \act
 %\chapterinfo{TEST}
 
