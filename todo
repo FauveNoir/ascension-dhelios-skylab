@@ -1,3 +1,11 @@
+Priorité:
+- [x] Priciser d’où sont tirées les traductions
+- [x] Mettre un vspace avant le titre de crédit
+- [x] Renomer crédit en crédits graphiques
+- [x] Ajuster les numéros de page du pdf
+- [x] Ajouter l’argument en 4e de couv
+- [ ] Faire un ajustement centré pour les \decors{}
+
 Intrigue:
 - [x] Caser la prière
 - [x] Faire l’explication sur la nature de la bâtardise
@@ -14,9 +22,9 @@ Typo :
 - [x] Veuves et orphelins dans la TOC
 - [x] Problème des condensats
 - [x] Dépassement de marge droite
-- [ ] Crédits des images
-- [ ] Page de garde
-- [ ] Correspondance entre les pages pdf et la page réelle
+- [x] Crédits des images
+- [x] Page de garde
+- [x] Correspondance entre les pages pdf et la page réelle
 
 
 Graphisme :
@@ -31,7 +39,7 @@ Caser quelque part la dame des figurines de Lewis.
 - [x] Que sa longévité soit étendue, puisse-t-elle ne mourir que par satiété de la vie.
 - [x] Une vie perdue d’avance ne peut être perdue deux fois.
 - [x]
-— Que de luxe vous payez-vous. Non content d’épargner vos énemis lorsque vous les pouvez occire, vous leur faites même des présents. Comme j’envie votre triomphe.
+— [x] Que de luxe vous payez-vous. Non content d’épargner vos énemis lorsque vous les pouvez occire, vous leur faites même des présents. Comme j’envie votre triomphe.
 
 — D’une certaine façon, c’est moi qui vous envie. C’est qu’en même temps qu’il me confère l’autorité, le poids de la couronne qui s’appesantit sur ma tête m’empêche d’en priser les attraits. Tandis que vous qui en êtes délestée, avez tout loisir de les estimer désormais. Car le pouvoir ne vaut qu’au jour où l’on en est dépossédé.
 
@@ -69,4 +77,23 @@ Et c’est pour cela qu’il me convient à moi mieux qu’à personne.
 
 
 
-Lors que le Divin gratifia mon père de son premier enfant, je fus offert par le diable en guise de cadeau de baptème.
+Lors que le Divin gratifia mon père de son premier enfant, le diable m’offrit en guise de cadeau de baptême.
+
+
+Le fond difus du cosmos dit « Je serais avant le début et je fus après la fin. »
+
+
+Leurs os blanchis servirent de bucher à ceux qui leurs survécurent.
+
+
+
+
+
+Armoiries
+Date
+LaTeX
+Copie
+Citation
+Sujets : …|…|…
+Classification
+
