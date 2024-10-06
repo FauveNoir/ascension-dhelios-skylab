@@ -12,7 +12,7 @@
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{ragged2e}
-\usepackage{doclicense}
+\usepackage[type={CC}, modifier={by},version={4.0}]{doclicense}
 \usepackage[htt]{hyphenat}
 \usepackage{tikz}% <<<<<<<<<<<
 \usepackage{eso-pic}% <<<<<<<<<<<
@@ -31,6 +31,7 @@
 % Ajuster les numéros de  page de section avec les numéros de pages de chapitres dans la table des matières
 %\renewcommand{\cftchappagefont}{\fontfamily{Latin Modern Roman}\fontseries{b}\selectfont} 
 
+\graphicspath{img/}
 
 
 \captionsetup[figure]{font=footnotesize}
@@ -480,6 +481,9 @@
 
   \frontmatter
 
+  \input{argument.tex}
+
+  \cleardoublepage
 
   \thispagestyle{empty}
   \pdfbookmark[0]{Page de garde}{garde}
