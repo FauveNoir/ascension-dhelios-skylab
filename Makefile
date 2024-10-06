@@ -15,7 +15,7 @@ OUTPUTDIR =output
 
 #############################################################################
 
-OUTPUTSUFFIXREGEX=((-agressif|)(-imprim|)(-NB|))
+OUTPUTSUFFIXREGEX=((-agressif|)(-imprim|)(-NB|)(-COUVERTURE|-CONTREPLAT|)(-A3plus|-A3|))
 TEXEXTENTIONSREGEX=(\.(toc|aux|bbl|blg|glg|glo|gls|ist|log|out|run\.xml)|-blx\.bib)
 
 ########################################################################
@@ -132,6 +132,8 @@ PROTECTED       = ^\.git$$
 
 all:
 	make compile
+	make imposition
+	make clean
 
 compile:
 	${COMPIL} ;
@@ -168,9 +170,9 @@ correctionfiles: $(OUTPUTDIR)/${PROCNAME}.pdf
 	tar zcvf $(OUTPUTDIR)/${PROCNAME}.gzip $(OUTPUTDIR)/${PROCNAME}.pdf $(OUTPUTDIR)/${PROCNAME}.txt contenu.tex main.tex
 
 
-imposition: ${PROCNAME}.pdf
-	./covertoprint.sh $(OUTPUTDIR)/${PROCNAME}.pdf
-	./imposition.sh $(OUTPUTDIR)/${PROCNAME}.pdf
+imposition: $(OUTPUTDIR)/${PROCNAME}.pdf
+	./scripts/covertoprint.sh $(OUTPUTDIR)/${PROCNAME}.pdf
+	./scripts/imposition.sh $(OUTPUTDIR)/${PROCNAME}.pdf
 ########################################################################
 # Traitement des arguments de nétoyage                                 #
 ########################################################################
