@@ -11,8 +11,12 @@ DOUBLEEDITION = no#      # Doit être placé à `true` pour les cas où    #
                          # l’on désire maintenir deux éditions         #
                          # concurentes.                                #
 ########################################################################
+OUTPUTDIR =output
 
 #############################################################################
+
+OUTPUTSUFFIXREGEX=((-agressif|)(-imprim|)(-NB|))
+TEXEXTENTIONSREGEX=(\.(toc|aux|bbl|blg|glg|glo|gls|ist|log|out|run\.xml)|-blx\.bib)
 
 ########################################################################
 # Traitement préliminaire des options requises à la compilation        #
@@ -102,13 +106,13 @@ PDF             = mimeopen # Logiciel de lecture des fichiers de sortie. La comm
 PROCNAME        = ${NAME}${SUFFIX}# Variable formant le nom final du fichier de sortie avec les suffixes nécéssaires, selon les options de compilation demandées.
 
 ifdef TEXARGS # Si des variables suplémentaires sont à injecter, alors nous les injectons.
-  COMPIL        = ${TEX} -jobname=${PROCNAME}  "${TEXARGS} \input{${MAINFILE}}"
+  COMPIL        = ${TEX} -output-directory="${OUTPUTDIR}" -jobname=${PROCNAME}  "${TEXARGS} \input{${MAINFILE}}"
 else # Sinon, nous ne nous les injectons pas et compilons simplement par l’appel au fichier principal.
-  COMPIL        = ${TEX} -jobname=${PROCNAME}  "\input{${MAINFILE}}"
+  COMPIL        = ${TEX} -output-directory="${OUTPUTDIR}" -jobname=${PROCNAME}  "\input{${MAINFILE}}"
 endif
 
 FULLCOMPIL      = ${COMPIL} ; ${COMPIL} # Double compilation.
-PRODUCED        = ^${NAME}((-Ed.-(sav|com)|)(-agressif|)(-imprim|)(-NB|)\.pdf|\.tar\.gz)$$# Variable contenant les noms des différentes possibilités de noms de fichiers de sorties.
+PRODUCED        = ^${OUTPUTDIR}/${NAME}((-Ed.-(sav|com)|)(-agressif|)(-imprim|)(-NB|)\.pdf|\.tar\.gz)$$# Variable contenant les noms des différentes possibilités de noms de fichiers de sorties.
 BIB             = bibtex # Déffinition du gestionnaire de bibliographie.
 MAKEGLOS        = makeglossaries # déffinition du gestionnaire de dictionnaire.
 MAKEGITHISTORIC = git log --format="%ad & %s \\\\ " --date=short # Commande de création d’un tableau latex de l’historique de révision d’après l’arbre de Git.
@@ -134,7 +138,7 @@ compile:
 	#${COMPIL} ;
 	#$(MAKEGLOS) ${PROCNAME}.glo ; # Traitmeent du glossaire [À décomenter si besoin de glossaire].
 ifeq ($(SCHOLARLY),true) # Le bloc suivant n’est actif que pour les projets dévelopant une biédition.
-	$(BIB)      ${PROCNAME} ; # Traitement de la bibliographie [À décomenter si besoin de bibliographie].
+	$(BIB)      ${OUTPUTDIR}/${PROCNAME}.aux ; # Traitement de la bibliographie [À décomenter si besoin de bibliographie].
 	${FULLCOMPIL}
 endif
 
@@ -149,35 +153,35 @@ graphics:
 	${MAKEIMAGE}     ; # Conversion des images simples
 	${MAKETEXTIMAGE} # Conversion des images à texte.
 
-view: ${PROCNAME}.pdf
-	$(PDF) ${PROCNAME}.pdf & # Visionage du fichier de sortie à l’aide du lecteur déffinit par défaut par le système.
+view: $(OUTPUTDIR)/${PROCNAME}.pdf
+	$(PDF) $(OUTPUTDIR)/${PROCNAME}.pdf & # Visionage du fichier de sortie à l’aide du lecteur déffinit par défaut par le système.
 
-print: ${PROCNAME}.pdf
+print: $(OUTPUTDIR)/${PROCNAME}.pdf
 ifdef PRINTABLE
-	${PRINT} ${PROCNAME}.pdf # Si l’impression d’un document est demandée avec l’option d’impression activée, alors imprimer immédiatement.
+	${PRINT} $(OUTPUTDIR)/${PROCNAME}.pdf # Si l’impression d’un document est demandée avec l’option d’impression activée, alors imprimer immédiatement.
 else # Sinon, avertir de la perte de donnée occasionée par les formats non-adaptés à l’impression.
-	echo "AVIS : Vous tentez d’imprimer une version non adaptée à cet effet."; echo "Par exemple, les liens sont cliquables et n’aparraissent pas au tirrage, ce qui constitue une perte d’information." ; ANSWERISCORRECT="no" ; read -p "Souhaitez vous continuer, tout de même ? [(N)on|(o)ui] " WHATUSERWANTTODO ; while [[ $$ANSWERISCORRECT == "no" ]] ; do if [[ $$WHATUSERWANTTODO == "o" ]]; then ${PRINT} ${PROCNAME}.pdf ; ANSWERISCORRECT="yes" ; elif [[ $$WHATUSERWANTTODO == "n" ]]; then echo "Fin de la production. Il n’y a rien à faire." ; ANSWERISCORRECT="yes" ; else read -p "La réponse « $$WHATUSERWANTTODO » est inconue. Veuillez saisir une réponse valide [(N)on|(o)ui] " WHATUSERWANTTODO ; fi ; done
+	echo "AVIS : Vous tentez d’imprimer une version non adaptée à cet effet."; echo "Par exemple, les liens sont cliquables et n’aparraissent pas au tirrage, ce qui constitue une perte d’information." ; ANSWERISCORRECT="no" ; read -p "Souhaitez vous continuer, tout de même ? [(N)on|(o)ui] " WHATUSERWANTTODO ; while [[ $$ANSWERISCORRECT == "no" ]] ; do if [[ $$WHATUSERWANTTODO == "o" ]]; then ${PRINT} $(OUTPUTDIR)/${PROCNAME}.pdf ; ANSWERISCORRECT="yes" ; elif [[ $$WHATUSERWANTTODO == "n" ]]; then echo "Fin de la production. Il n’y a rien à faire." ; ANSWERISCORRECT="yes" ; else read -p "La réponse « $$WHATUSERWANTTODO » est inconue. Veuillez saisir une réponse valide [(N)on|(o)ui] " WHATUSERWANTTODO ; fi ; done
 endif
 
-correctionfiles: ${PROCNAME}.pdf
-	pdftotext ${PROCNAME}.pdf
-	tar zcvf ${PROCNAME}.gzip ${PROCNAME}.pdf ${PROCNAME}.txt contenu.tex main.tex
+correctionfiles: $(OUTPUTDIR)/${PROCNAME}.pdf
+	pdftotext $(OUTPUTDIR)/${PROCNAME}.pdf
+	tar zcvf $(OUTPUTDIR)/${PROCNAME}.gzip $(OUTPUTDIR)/${PROCNAME}.pdf $(OUTPUTDIR)/${PROCNAME}.txt contenu.tex main.tex
 
 
 imposition: ${PROCNAME}.pdf
-	./covertoprint.sh ${PROCNAME}.pdf
-	./imposition.sh ${PROCNAME}.pdf
+	./covertoprint.sh $(OUTPUTDIR)/${PROCNAME}.pdf
+	./imposition.sh $(OUTPUTDIR)/${PROCNAME}.pdf
 ########################################################################
 # Traitement des arguments de nétoyage                                 #
 ########################################################################
 
 archive:
-	tar --gzip --create --verbose --file ${NAME}.tar.gz `ls | grep --line-regexp --file=archivedfiles | tr '\n' ' '` # N’archiver que les fichiers déffinits dans la variable `$ARCHIVED`.
+	tar --gzip --create --verbose --file $(OUTPUTDIR)/${NAME}.tar.gz `ls | grep --line-regexp --file=archivedfiles | tr '\n' ' '` # N’archiver que les fichiers déffinits dans la variable `$ARCHIVED`.
 
 clean:
-	for f in `ls | grep --extended-regexp  "(^${NAME}(-Ed\.-(sav|com)|)((-agressif|)(-imprim|)(-NB|))(\.(aux|bbl|blg|glg|glo|gls|ist|log|out|run\.xml)|-blx\.bib)|*\.tex\.project\.vim)"` ; do echo Suppression de $$f ; rm $$f ; done ;#
+	for f in `ls ${OUTPUTDIR} | grep --extended-regexp  "(${NAME}(-Ed\.-(sav|com)|)${OUTPUTSUFFIXREGEX}${TEXEXTENTIONSREGEX}|*\.tex\.project\.vim)"` ; do echo Suppression de $$f ; rm ${OUTPUTDIR}/$$f ; done ;#
 	for f in `ls | grep --extended-regexp  ".*(\~|\.orig)"` ; do echo Suppression de $$f ; rm $$f ; done ;#
 
 mrproper:
 	make clean;#
-	for f in `ls | grep --extended-regexp  "^${NAME}(-Ed.-(sav|com)|)((-agressif|)(-imprim|)(-NB|))\.pdf"` ; do echo Suppression de $$f ; rm $$f ; done
+	for f in `ls | grep --extended-regexp  "^${OUTPUTDIR}/${NAME}(-Ed.-(sav|com)|)((-agressif|)(-imprim|)(-NB|))\.pdf"` ; do echo Suppression de $$f ; rm $$f ; done
