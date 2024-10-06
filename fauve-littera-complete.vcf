@@ -1,0 +1,24 @@
+BEGIN:VCARD
+SOURCE:http://taniere.info/contact/fauve-litt.vcf
+VERSION:4.0
+FN:Fauve
+NICKNAME:Fauve
+N:Al Idrissi;Idriss
+ROLE:Écrivain
+ORG:Tanière
+KIND:individual
+GENDER:M
+TEL;TYPE=cell:+(00212) 766 911 257
+EMAIL:fauve.littera@taniere.info
+MAILER:mutt
+TZ:Africa/Casablanca
+CATEGORIES:Littérature,Art,Philosophie
+SORT-STRING:Fauve
+URL:http://taniere.info/
+KEY;MEDIATYPE=application/pgp-keys:http://taniere.info/contact/fauve.asc
+PHOTO;JPEG:http://example.com/photo.jpg
+SOUND;MEDIATYPE=audio/ogg:http://example.com/sound.ogg
+SOUND:data:audio/ogg;base64,[base64-data]
+X-MOZILLA-HTML:FALSE
+REV:2023-01-20
+END:VCARD

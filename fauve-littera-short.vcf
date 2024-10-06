@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:4.0
+SOURCE:http://taniere.info/contact/fauve-litt.vcf
+FN:Fauve
+N:Al Idrissi;Idriss
+ROLE:Écrivain
+TEL;TYPE=cell:+(00212) 766 911 257
+EMAIL:fauve.littera@taniere.info
+URL:http://taniere.info/
+REV:2023-01-20
+END:VCARD
