@@ -27,6 +27,7 @@
 \usepackage{wrapfig} 
 \usepackage{caption} 
 \usepackage{catchfile} 
+\usepackage[templates]{genealogytree}
 %\usepackage{tocloft}
 % Ajuster les numéros de  page de section avec les numéros de pages de chapitres dans la table des matières
 %\renewcommand{\cftchappagefont}{\fontfamily{Latin Modern Roman}\fontseries{b}\selectfont} 
@@ -165,16 +166,18 @@
   \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter. {##1}}}{}}
 }
 
-\makeatletter
-\pagestyle{fancy2}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[LO]{\MakeUppercase{Acte \theact{}, Scène \thescene}}
-\fancyhead[RE]{\MakeUppercase{Ascension d’\elena{} Skylab}}
-\fancyfoot{}
+\newcommand{\theatreheader}{
+  \makeatletter
+  \pagestyle{fancy2}
+  \fancyhead[LE,RO]{\thepage}
+  \fancyhead[LO]{\MakeUppercase{Acte \theact{}, Scène \thescene}}
+  \fancyhead[RE]{\MakeUppercase{Ascension d’\elena{} Skylab}}
+  \fancyfoot{}
 
+\makeatother
+}
 \patchcmd{\chaptermark}{\@chapapp\ }{}{}{}
 \renewcommand{\headrulewidth}{0pt}
-\makeatother
 
 
 \newcommand\workingnote[1]{%
@@ -356,7 +359,7 @@
         \end{multicols}
 
         \begin{center}
-        La scène se déroule dans l’Arche envoyée il y a vingt-huit-mille ans depuis la Terre afin d’atteindre Proxima Centauri b.
+        La scène se déroule dans l’Arche envoyée il y a vingt-huit-mille ans depuis la Terre afin d’atteindre Proxima Centauri~b.
         \end{center}
       \end{adjustwidth}
 
@@ -506,6 +509,7 @@
 
   \input{argument.tex}
 
+
   \cleardoublepage
 
   \thispagestyle{empty}
@@ -587,6 +591,7 @@
   \vfill\null                % Espace vértical.
 
   \mainmatter
+  \theatreheader
   \input{contenu.tex}       % L’œuvre proprement dite.
    \pdfbookmark[0]{Ultima pagina}{ultima}
 % \edef\measurepage{\the\dimexpr\pagegoal-\pagetotal-\baselineskip\relax}
@@ -638,6 +643,7 @@
 %\addtocontents{toc}{\protect\pagebreak} % ATTENTION ajustement conjoncturel
 
   \input{postface.tex}
+  \input{relations.tex}
   %\thispagestyle{empty} % /!\ Attention, conjoncturel.
 
 

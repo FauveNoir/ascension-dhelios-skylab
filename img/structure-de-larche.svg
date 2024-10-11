@@ -25,9 +25,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="2.5144818"
-     inkscape:cx="84.311606"
-     inkscape:cy="98.032127"
+     inkscape:zoom="3.2603416"
+     inkscape:cx="114.09847"
+     inkscape:cy="114.55855"
      inkscape:window-width="1916"
      inkscape:window-height="1034"
      inkscape:window-x="0"
@@ -55,18 +55,19 @@
        sodipodi:arc-type="arc"
        d="M 94.014362,104.35558 A 30.03437,30.03437 0 0 1 124.08815,134.35004 30.03437,30.03437 0 0 1 94.094137,164.42427 30.03437,30.03437 0 0 1 64.01946,134.4307 30.03437,30.03437 0 0 1 94.012575,104.35558" />
     <path
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:0.26458299,0.79374898;stroke-opacity:1;paint-order:stroke markers fill;stop-color:#000000;stroke-dashoffset:0"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:0.264583, 0.793749;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill;stop-color:#000000"
        id="path1000"
        sodipodi:type="arc"
-       sodipodi:cx="94.05378"
-       sodipodi:cy="134.38994"
+       sodipodi:cx="91.958771"
+       sodipodi:cy="135.83215"
        sodipodi:rx="8.238184"
        sodipodi:ry="8.238184"
        sodipodi:start="4.7110758"
        sodipodi:end="4.7064949"
        sodipodi:open="true"
        sodipodi:arc-type="arc"
-       d="m 94.042961,126.15176 a 8.238184,8.238184 0 0 1 8.248979,8.21793 8.238184,8.238184 0 0 1 -8.208473,8.25838 8.238184,8.238184 0 0 1 -8.267778,-8.19901 8.238184,8.238184 0 0 1 8.189534,-8.27716" />
+       d="m 91.947953,127.59398 a 8.238184,8.238184 0 0 1 8.248977,8.21792 8.238184,8.238184 0 0 1 -8.208472,8.25838 8.238184,8.238184 0 0 1 -8.267778,-8.199 8.238184,8.238184 0 0 1 8.189535,-8.27717"
+       transform="rotate(-0.88841295)" />
     <path
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;stop-color:#000000"
        id="path1002"
