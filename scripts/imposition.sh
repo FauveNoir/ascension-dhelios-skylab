@@ -29,7 +29,7 @@ fi
 (( HAFPAGENUMBEROFPAGESPERBOOKLET=$NUMBEROFPAGESPERBOOKLET/2 )) # Usefull to leave the booklet loop 
 EXTRACTCOVER=true
 NUMBERINGPAGES=false
-FACETOFACE=false
+FACETOFACE=true # TODO comprendre ce que fait cette commande
 MARKBOOKLETATTACHMENT=true
 
 
@@ -66,6 +66,7 @@ function makebookletpage() {
 	bookletfilename=$(makebookletfilename $3)
 	pageleft=$(normalizeNumber $2)
 	pageright=$(normalizeNumber $1)
+
 	echo "Traitmeent des pages $pageleft et $pageright ; Page $bookletPageNormalized du livret"
 	pdfjam --quiet /tmp/page_{$pageleft,$pageright}.pdf  --nup 2x1 --landscape --outfile $bookletfilename
 }
@@ -76,6 +77,7 @@ function makereversedbookletpage() {
 	bookletfilename=$(makebookletfilename $3)
 	pageleft=$(normalizeNumber $1)
 	pageright=$(normalizeNumber $2)
+
 	echo "Traitmeent des pages $pageleft et $pageright ; Page $bookletPageNormalized du livret"
 	if $FACETOFACE; then 
 		pdfjam --quiet /tmp/page_{$pageleft,$pageright}.pdf  --nup 2x1 --landscape --outfile $bookletfilename
@@ -186,7 +188,6 @@ while [ $page -lt $INTERIORNUMBEROFPAGES ] ; do
 		#        │        ╰─────────────╯        │
 		#        │                               │
 		#        ╰───────────────────────────────╯
-
 
 
 		# Process on pdf files.
