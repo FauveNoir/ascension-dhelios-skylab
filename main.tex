@@ -2,7 +2,6 @@
 \usepackage[culdelampe]{fauve}
 \usepackage{changepage}
 \usepackage{fancyhdr}
-%\usepackage{endnotes}
 \usepackage{enotez}
 \usepackage{ifthen}
 \usepackage{paracol}
@@ -14,9 +13,9 @@
 \usepackage{ragged2e}
 \usepackage[type={CC}, modifier={by},version={4.0}]{doclicense}
 \usepackage[htt]{hyphenat}
-\usepackage{tikz}% <<<<<<<<<<<
-\usepackage{eso-pic}% <<<<<<<<<<<
-\usetikzlibrary{tikzmark}% <<<<<<<<<<<
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usetikzlibrary{tikzmark}
 \usepackage{verbatim}
 \usepackage{pbox}
 \usepackage{eqparbox}
@@ -24,14 +23,11 @@
 \usepackage{zxjatype}
 \usepackage[ipa]{zxjafont}
 \usepackage{marginnote}
-\usepackage{wrapfig} 
-\usepackage{caption} 
-\usepackage{catchfile} 
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{catchfile}
 \usepackage[templates]{genealogytree}
 \usepackage{booktabs}
-%\usepackage{tocloft}
-% Ajuster les numéros de  page de section avec les numéros de pages de chapitres dans la table des matières
-%\renewcommand{\cftchappagefont}{\fontfamily{Latin Modern Roman}\fontseries{b}\selectfont} 
 
 \graphicspath{{img/}}
 
@@ -43,8 +39,6 @@
 \XeTeXcharclass`…=\XeTeXcharclass`A
 \XeTeXcharclass`—=\XeTeXcharclass`A
 \XeTeXcharclass`\,=\XeTeXcharclass`A
-
-%\input{main-glos.tex}
 
 \makeatletter 
 \newcommand\hardnobreakpar{\par\nobreak\@afterheading} 
@@ -151,7 +145,6 @@
 
 
 
-%\newcommand\oldStageDir[1]{\StageDir{#1}}
 \newcommand\StageDirII[1]{\noindent\parbox{\textwidth}{\StageDir{\begin{center}\sc#1\nopagebreak[4]\end{center}}}\nopagebreak[4]}
 \newcommand\decors[1]{\noindent\parbox{\textwidth}{\StageDir{\begin{center}{\footnotesize#1}\end{center}}}\nopagebreak[4]}
 
@@ -160,8 +153,6 @@
 
 
 \renewcommand\printscenenum{\scenenumfont \thescene}
-%\renewcommand\casttitlename{}
-%\renewcommand\drampermark{}
 
 \fancypagestyle{fancy2}{%
   \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter. {##1}}}{}}
@@ -827,17 +818,5 @@ Sur l’Arche envoyée il y’a vingt-huit-mille ans depuis la Terre vers Proxim
 \end{center}
 
 
-    
-
   \null\vfill
-
-
-  %
-  %
-  %\printbibliography
-  %
-  %\glsaddall
-  %\glossarystyle{tree}
-  %\printglossary[title=Glossaire,toctitle=Glossaire]
-  %
 \end{document}
