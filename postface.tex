@@ -17,6 +17,58 @@ C’est une typographie, dis-je, où si l’encre est sang, il se dispense de to
 
 %Le sang coule, celui de la bléssure, celui de l’assassina, de l’accouchement, de la chirurgie, celui que l’on mange, celui de la boucherie.
 
+\newcommand\doubledate[2]{\footnotesize#1\\\tiny #2}
+
+\begin{figure}[h]
+	\centering
+	\begin{adjustwidth}{-1.0cm}{0cm}
+\begin{tikzpicture}[
+    timeline/.style={thick},
+    timeline dashed/.style={thick, dashed},
+    event/.style={circle, fill=white, draw=black, inner sep=1.5pt},
+    label/.style={font=\small, align=center}
+]
+
+% --- Ligne principale ---
+% Partie avant l'ellipse
+\draw[timeline] (0,0) -- (2.5,0);
+
+% Partie pointillée = ellipse temporelle
+\draw[timeline dashed] (3.0,0) -- (5.0,0);
+
+% Partie après l'ellipse
+\draw[timeline] (4.5,0) -- (14,0);
+
+% --- Événements ---
+\node[event] (ev1) at (0,0) {};
+\node[label,above=3pt of ev1] {\doubledate{2025}{-500}};
+\node[label,below=3pt of ev1,rotate=-45,anchor=west] {Ère actuelle};
+
+\node[event] (ev2) at (0.8,0) {};
+\node[label,above=3pt of ev2] {\doubledate{2525}{0}};
+\node[label,below=3pt of ev2,rotate=-45,anchor=west] {Jactum};
+
+% Étiquette pour l'ellipse
+\node[label,below=3pt] at (4.0,0) {Histoire tricamillénaire\\de l’Arche};
+
+\node[event] (ev3) at (7.0,0) {};
+\node[label,above=3pt of ev3] {\doubledate{31456}{28931}};
+\node[label,below=3pt of ev3,rotate=-45,anchor=west] {Moment du récit};
+
+\node[event] (ev4) at (8,0) {};
+\node[label,above=3pt of ev4] {\doubledate{31525}{29000}};
+\node[label,below=3pt of ev4,rotate=-45,anchor=west] {Arrivée recalculée};
+
+\node[event] (ev5) at (14,0) {};
+\node[label,above=3pt of ev5] {\doubledate{32525}{30000}};
+\node[label,below=3pt of ev5] {Arrivée initialement prévue\\(au moment du Jactum)};
+
+\end{tikzpicture}
+	\end{adjustwidth}
+	\caption{Frise chronologique de la civilisation de l’Arche depuis le départ de la Terre jusqu’au événements du récit}
+\end{figure}
+
+
 \paragraph{Guerre ubiquitaire}%
 \begin{wrapfigure}{o}[3cm]{5.5cm}
 	\vspace{-1em}
